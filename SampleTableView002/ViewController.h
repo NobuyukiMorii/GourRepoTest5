@@ -10,8 +10,9 @@
 
 @interface ViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 {
-    NSArray *_movieArray; //メンバ変数宣言
+    NSArray *_movieArray;   //メンバ変数宣言
 }
+@property (strong, nonatomic) NSMutableData *receivedData;
 
 @property (weak, nonatomic) IBOutlet UITableView *coffeeListTableView;
 @property (weak, nonatomic) IBOutlet UITextField *serchTextField;

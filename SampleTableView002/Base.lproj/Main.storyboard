@@ -16,11 +16,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="fze-ha-xFA">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="fze-ha-xFA">
                                 <rect key="frame" x="0.0" y="110" width="600" height="497"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6bd-6G-cnU">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6bd-6G-cnU">
                                 <rect key="frame" x="0.0" y="72" width="600" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -30,14 +30,6 @@
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="fze-ha-xFA" firstAttribute="top" secondItem="6bd-6G-cnU" secondAttribute="bottom" id="BRt-F4-rSB"/>
-                            <constraint firstAttribute="bottom" secondItem="fze-ha-xFA" secondAttribute="bottom" id="ThJ-CQ-4Yf"/>
-                            <constraint firstItem="6bd-6G-cnU" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="3" id="llA-54-BdB"/>
-                            <constraint firstItem="6bd-6G-cnU" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="5" id="qYY-oF-rg7"/>
-                            <constraint firstAttribute="trailing" secondItem="6bd-6G-cnU" secondAttribute="trailing" constant="3" id="wZG-Na-b4q"/>
-                            <constraint firstItem="fze-ha-xFA" firstAttribute="top" secondItem="6bd-6G-cnU" secondAttribute="bottom" constant="5" id="yT5-N4-M3F"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="4wk-6t-vZL"/>
                     <connections>
