@@ -14,15 +14,14 @@
 @end
 
 @implementation ViewController
-{
-    UIView *loadingView;
-    UIActivityIndicatorView *indicator;
-}
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    // delegate 設定
+    [self.serchTextField setDelegate:self];
+    //テキストフィールドの改行ボタンをリターンにする
+    self.serchTextField.returnKeyType = UIReturnKeyDone;
+    
     _coffeeListTableView.delegate = self;
     _coffeeListTableView.dataSource = self;
     
@@ -103,23 +102,10 @@
 
 //リターンされた時に発動
 - (IBAction)serchMovie:(id)sender {
+    //キーボードをとじる
+    [self.serchTextField resignFirstResponder];
 
-    //ぐるぐるを表示するための処理
-    loadingView = [[UIView alloc] initWithFrame:self.view.bounds];
-    // 雰囲気出すために背景を黒く半透明する
-    loadingView.backgroundColor = [UIColor blackColor];
-    loadingView.alpha = 0.5f;
-    indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    // でっかいグルグル
-    indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
-    // 画面の中心に配置
-    [indicator setCenter:CGPointMake(loadingView.bounds.size.width / 2, loadingView.bounds.size.height / 2)];
-    // 画面に追加
-    [loadingView addSubview:indicator];
-    [self.view addSubview:loadingView];
-    // ぐるぐる開始
-    [indicator startAnimating];
-
+    
     
     // 送信したいURLを作成する
     NSURL *url = [NSURL URLWithString:@"http://localhost:8888/GourRepoM2/ApiMovies/returnMoviesJson.json"];
@@ -128,23 +114,20 @@
     // MethodにPOSTを指定する。
     request.HTTPMethod = @"POST";
     
-    // 送付したい内容を、key1=value1&key2=value2・・・という形の
-    // 文字列として作成する
+    // 送付したい内容を、文字列として作成する
     NSString *areaname = self.serchTextField.text;
     NSString *body = [NSString stringWithFormat:@"areaname=%@", areaname];
     
     // HTTPBodyには、NSData型で設定する
     request.HTTPBody = [body dataUsingEncoding:NSUTF8StringEncoding];
     
-    NSURLConnection     *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     
     // 作成に失敗する場合には、リクエストが送信されないので
     // チェックする
     if (!connection) {
         NSLog(@"connection error.");
     }
-    //リロードする
-    [self.coffeeListTableView reloadData];
 }
 
 - (void)connection:(NSURLConnection *)connection
@@ -155,17 +138,6 @@ didReceiveResponse:(NSURLResponse *)response{
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
 
-    //テーブルの設定
-    _coffeeListTableView.delegate = self;
-    _coffeeListTableView.dataSource = self;
-    _coffeeListTableView.rowHeight = 100;
-    
-    //カスタマイズしたセルをテーブルビューにセット
-    UINib *nib = [UINib nibWithNibName:@"customCell" bundle:nil];
-    
-    //カスタムセルを使用しているTableViewに登録
-    [self.coffeeListTableView registerNib:nib forCellReuseIdentifier:@"Cell"];
-
     // 受信したデータを追加していく
     [self.receivedData appendData:data];
     NSArray *array = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
@@ -175,11 +147,9 @@ didReceiveResponse:(NSURLResponse *)response{
     NSLog(@"%@",_movieArray);
 }
 
-- (void)connectionDifFinishLoading:(NSURLConnection *)connection {
-    // ぐるぐる停止
-    [indicator stopAnimating];
-    // 画面から除去して黒い半透明を消す
-    [loadingView removeFromSuperview];
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    //テーブルをリフレッシュする
+    [self.coffeeListTableView reloadData];
     
     NSLog(@"Did finish loading!");
 }
