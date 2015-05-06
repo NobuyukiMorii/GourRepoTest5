@@ -10,7 +10,8 @@
 
 @interface ViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
 {
-    NSArray *_movieArray; //メンバ変数宣言
+    NSArray *_movieArray;   //メンバ変数宣言
+    UIView *uv_load;        //LoadingView(通信中にぐるぐる回るやつ)
 }
 
 @property (weak, nonatomic) NSMutableData *receivedData;

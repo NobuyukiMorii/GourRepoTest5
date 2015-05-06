@@ -127,7 +127,25 @@
     // チェックする
     if (!connection) {
         NSLog(@"connection error.");
+    } else {
+        //Loadingを表示するView(通信中にぐるぐる回るやつ) 設定
+        UIScreen *sc = [UIScreen mainScreen];
+        uv_load = [[UIView alloc] initWithFrame:CGRectMake(0,0,sc.applicationFrame.size.width, sc.applicationFrame.size.height)];
+        uv_load.backgroundColor = [UIColor colorWithRed:0.3 green:0.3 blue:0.3 alpha:0.7];
+        
+        //ぐるぐる回る
+        UIActivityIndicatorView *aci_loading;
+        aci_loading = [[UIActivityIndicatorView alloc] init];
+        aci_loading.frame = CGRectMake(0,0,sc.applicationFrame.size.width, sc.applicationFrame.size.height);
+        aci_loading.center = uv_load.center;
+        aci_loading.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
+        [aci_loading startAnimating];
+        
+        //Loading表示
+        [uv_load addSubview:aci_loading];
+        [self.view addSubview:uv_load];
     }
+    
 }
 
 - (void)connection:(NSURLConnection *)connection
@@ -150,6 +168,8 @@ didReceiveResponse:(NSURLResponse *)response{
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     //テーブルをリフレッシュする
     [self.coffeeListTableView reloadData];
+    //Loading非表示
+    uv_load.hidden = true;
     
     NSLog(@"Did finish loading!");
 }
