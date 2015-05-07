@@ -18,7 +18,6 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *coffeeListTableView;
 
-
 @property (weak, nonatomic) IBOutlet UITextField *serchTextField;
 - (IBAction)serchMovie:(id)sender;
 
