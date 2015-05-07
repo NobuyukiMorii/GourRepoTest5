@@ -148,8 +148,7 @@
     
 }
 
-- (void)connection:(NSURLConnection *)connection
-didReceiveResponse:(NSURLResponse *)response{
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
     // データの長さを0で初期化
     [self.receivedData setLength:0];
 }
@@ -161,11 +160,28 @@ didReceiveResponse:(NSURLResponse *)response{
     NSArray *array = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
     NSString *message = [array valueForKeyPath:@"message"];
     _movieArray = [message valueForKeyPath:@"result"];
-   
+    
+    //データがない場合
+    if(_movieArray.count == 0){
+        //アラートビューを出す
+        // １行で書くタイプ（１ボタンタイプ）
+        UIAlertView *alert =
+        [[UIAlertView alloc] initWithTitle:@"" message:@"ムービーがありませんでした。"
+                                  delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        
+        //通信を中断
+        [connection cancel];
+        
+        //Loading非表示
+        uv_load.hidden = true;
+    }
     NSLog(@"%@",_movieArray);
 }
 
+
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+
     //テーブルをリフレッシュする
     [self.coffeeListTableView reloadData];
     //Loading非表示
