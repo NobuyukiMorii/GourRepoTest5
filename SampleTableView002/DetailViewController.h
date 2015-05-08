@@ -11,12 +11,15 @@
 @interface DetailViewController : UIViewController
 {
     NSArray *_movieArray; //メンバ変数宣言
+
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *coffeeTitle;
 
 @property (nonatomic,assign) int select_num;
+@property (nonatomic,assign) NSArray* select_movie;
 
 @property (weak, nonatomic) IBOutlet UITextView *descriptionText;
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
 
 @end

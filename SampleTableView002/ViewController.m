@@ -91,6 +91,8 @@
     
     dvc.select_num = (int)indexPath.row;
     
+    dvc.select_movie = _movieArray[(long)indexPath.row];
+    
     //ナビゲーションコントローラーの機能で画面遷移
     [[self navigationController] pushViewController:dvc animated:YES];
 }

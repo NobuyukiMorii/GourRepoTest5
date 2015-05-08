@@ -7,6 +7,8 @@
 //
 
 #import "DetailViewController.h"
+//Youtube再生用
+
 
 @interface DetailViewController ()
 
@@ -17,37 +19,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSLog(@"%d",self.select_num);
+    //名前を表示
+    NSArray *Movie = [self select_movie];
+
+    self.coffeeTitle.text = [NSString stringWithFormat:@"%@",[Movie valueForKeyPath:@"Movie"][@"title"]];
+    self.descriptionText.text = [Movie valueForKeyPath:@"Restaurant"][@"name"];
     
-    //if文を使った場合
-//    if (self.select_num == 0) {
-//        self.coffeeTitle.text = @"ブルーマウンテン";
-//    }
-//    
-//    if (self.select_num == 1) {
-//        self.coffeeTitle.text = @"キリマンジャロ";
-//    }
-    
-    //配列を使った場合
-    _movieArray = @[@{@"name":@"ブルーマウンテン",
-                       @"desc":@"ジャマイカにあるブルーマウンテン山脈の標高800～1200mの限られた地域で栽培されるコーヒー豆のブランド。\nブルーマウンテンの特徴として、香りが非常に高く、繊細な味であることが挙げられる。香りが高いため、他の香りが弱い豆とブレンドすることが多い。"},
-                     @{@"name":@"キリマンジャロ",@"desc":@"説明キリ"},
-                     @{@"name":@"ブラジル",@"desc":@"説明ブラジル"},
-                     @{@"name":@"コロンビア",@"desc":@"説明コロンビア"}];
-    
-//    _coffeeArray = @[@"ブルーマウンテン",@"キリマンジャロ",@"ブラジル",@"コロンビア"];
-//    
-    self.coffeeTitle.text = [NSString stringWithFormat:@"%@とは",_movieArray[self.select_num][@"name"]];
-    self.descriptionText.text = _movieArray[self.select_num][@"desc"];
-    
-//    switch (self.select_num) {
-//        case 0:
-//            self.descriptionText.text = @"ジャマイカにあるブルーマウンテン山脈の標高800～1200mの限られた地域で栽培されるコーヒー豆のブランド。\nブルーマウンテンの特徴として、香りが非常に高く、繊細な味であることが挙げられる。香りが高いため、他の香りが弱い豆とブレンドすることが多い。";
-//            break;
-//            
-//        default:
-//            break;
-//    }
+    //動画を表示
+    NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"%@",[Movie valueForKeyPath:@"Movie"][@"youtube_iframe_url"]]];
+    NSURLRequest* request = [NSURLRequest requestWithURL:url];
+    [self.webView loadRequest:request];
+
+
 }
 
 - (void)didReceiveMemoryWarning {
