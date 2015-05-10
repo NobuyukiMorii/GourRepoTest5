@@ -28,7 +28,6 @@
     
     //動画を表示
     self.webView.delegate = self;
-    
     NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"%@",[Movie valueForKeyPath:@"Movie"][@"youtube_iframe_url"]]];
     NSURLRequest* request = [NSURLRequest requestWithURL:url];
     [self.webView loadRequest:request];
@@ -58,11 +57,18 @@
     //画面の大きさを取得する
     CGRect rect = [[UIScreen mainScreen] bounds];
     
+    //オブジェクトの画面の高さを取得する
+    float navigationBar_hight = self.navigationController.navigationBar.frame.size.height;
+    float statusBar_height = [[UIApplication sharedApplication] statusBarFrame].size.height;
+    float label_hight = self.coffeeTitle.frame.size.height;
+    float webView_height = self.webView.frame.size.height;
+    float activity_indicator_y = navigationBar_hight + statusBar_height + label_hight + webView_height/2 + 10;
+    
     // 画面の中央に表示するようにframeを変更する
     float w = _indicator.frame.size.width;
     float h = _indicator.frame.size.height;
     float x = rect.size.width/2;
-    float y = self.webView.frame.size.height/2 - h/2;
+    float y = activity_indicator_y;
     _indicator.frame = CGRectMake(x, y, w, h);
     
     _indicator.hidesWhenStopped = YES;

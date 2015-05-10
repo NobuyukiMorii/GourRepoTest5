@@ -53,8 +53,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ok6-Ly-MxK">
-                                <rect key="frame" x="52" y="354" width="280" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ok6-Ly-MxK">
+                                <rect key="frame" x="-2" y="59" width="605" height="21"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="CoH-n1-QTV"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -66,15 +70,23 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <webView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kzI-PS-juv">
-                                <rect key="frame" x="-11" y="39" width="611" height="296"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <webView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kzI-PS-juv">
+                                <rect key="frame" x="-5" y="86" width="611" height="252"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="w4A-Al-Rdc"/>
+                                </constraints>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="kzI-PS-juv" secondAttribute="trailing" id="bY1-hC-P3y"/>
-                            <constraint firstItem="kzI-PS-juv" firstAttribute="leading" secondItem="kKL-xB-fkn" secondAttribute="leading" id="g2t-k6-J9I"/>
+                            <constraint firstItem="kzI-PS-juv" firstAttribute="leading" secondItem="kKL-xB-fkn" secondAttribute="leading" id="Iat-l7-FtP"/>
+                            <constraint firstItem="kzI-PS-juv" firstAttribute="top" secondItem="Ok6-Ly-MxK" secondAttribute="bottom" id="KxQ-S8-0cH"/>
+                            <constraint firstItem="kzI-PS-juv" firstAttribute="top" secondItem="Ok6-Ly-MxK" secondAttribute="bottom" id="PCz-8X-FDN"/>
+                            <constraint firstItem="Ok6-Ly-MxK" firstAttribute="leading" secondItem="kKL-xB-fkn" secondAttribute="leading" id="Uge-fq-Iu9"/>
+                            <constraint firstAttribute="trailing" secondItem="kzI-PS-juv" secondAttribute="trailing" id="XVs-Pw-XfU"/>
+                            <constraint firstAttribute="trailing" secondItem="Ok6-Ly-MxK" secondAttribute="trailing" id="mpA-Zk-e6o"/>
+                            <constraint firstItem="Ok6-Ly-MxK" firstAttribute="top" secondItem="XjP-i0-7k2" secondAttribute="bottom" id="xNj-kY-UiB"/>
                         </constraints>
                     </view>
                     <connections>
