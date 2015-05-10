@@ -24,6 +24,7 @@
 		1BFA3D6319F4DE03009D4768 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BFA3D6119F4DE03009D4768 /* LaunchScreen.xib */; };
 		1BFA3D6F19F4DE03009D4768 /* SampleTableView002Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BFA3D6E19F4DE03009D4768 /* SampleTableView002Tests.m */; };
 		1BFA3D7A19F4EC30009D4768 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BFA3D7919F4EC30009D4768 /* DetailViewController.m */; };
+		A439C11A1AFF7F43000C88C1 /* NoImage.png in Resources */ = {isa = PBXBuildFile; fileRef = A439C1191AFF7F43000C88C1 /* NoImage.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		1BFA3D6E19F4DE03009D4768 /* SampleTableView002Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SampleTableView002Tests.m; sourceTree = "<group>"; };
 		1BFA3D7819F4EC30009D4768 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		1BFA3D7919F4EC30009D4768 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		A439C1191AFF7F43000C88C1 /* NoImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NoImage.png; path = ../../../../../../../Desktop/NoImage.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 		1BDEDF861ADE13B300D315F8 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				A439C1191AFF7F43000C88C1 /* NoImage.png */,
 				1BDEDF871ADE13B300D315F8 /* Italy.png */,
 				1BDEDF881ADE13B300D315F8 /* Japan.png */,
 				1BDEDF891ADE13B300D315F8 /* star1.png */,
@@ -251,6 +254,7 @@
 				1BDEDF851ADE12F100D315F8 /* customCell.xib in Resources */,
 				1BDEDF901ADE13B300D315F8 /* star1.png in Resources */,
 				1BDEDF8F1ADE13B300D315F8 /* Japan.png in Resources */,
+				A439C11A1AFF7F43000C88C1 /* NoImage.png in Resources */,
 				1BFA3D6019F4DE03009D4768 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

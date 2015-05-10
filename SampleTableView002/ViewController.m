@@ -71,10 +71,7 @@
     NSData *data = [NSData dataWithContentsOfURL:url];
     UIImage *img = [[UIImage alloc]initWithData:data];
     if(!img){
-        urlString = @"http://toko9000.com/ecapps/files/no-image-available.png";
-        url = [NSURL URLWithString:urlString];
-        data = [NSData dataWithContentsOfURL:url];
-        img = [[UIImage alloc]initWithData:data];
+        img = [UIImage imageNamed:@"NoImage.png"];
     }
     [cell.thumbnail setImage:img];
     

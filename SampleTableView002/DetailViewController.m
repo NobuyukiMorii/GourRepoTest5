@@ -24,7 +24,7 @@
     NSArray *Movie = [self select_movie];
 
     self.coffeeTitle.text = [NSString stringWithFormat:@"%@",[Movie valueForKeyPath:@"Movie"][@"title"]];
-    self.descriptionText.text = [Movie valueForKeyPath:@"Restaurant"][@"name"];
+    //self.descriptionText.text = [Movie valueForKeyPath:@"Restaurant"][@"name"];
     
     //動画を表示
     self.webView.delegate = self;
@@ -37,12 +37,26 @@
 
 }
 
+//動画のダウンロードが始まった時
 - (void)webViewDidStartLoad:(UIWebView *)webView {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 }
 
-
+//動画のダウンロードが終わった時
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
+    // アクティビティインジケータ非表示
+    [self stopActivityIndicatorAnimation];
+    
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+}
+
+//エラーになった時
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+    //アラートビューを出す
+    UIAlertView *alert =
+    [[UIAlertView alloc] initWithTitle:@"ネットワークエラー" message:@"ネットワークが良いところでもう一度お試し下さい。"
+                              delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
     // アクティビティインジケータ非表示
     [self stopActivityIndicatorAnimation];
     
