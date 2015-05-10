@@ -20,11 +20,44 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //名前を表示
+    //テーブルのデリゲート
+    _MovieTableView.delegate = self;
+    _MovieTableView.dataSource = self;
+    
+    // セクション名を設定する
+    sectionList =  [NSArray arrayWithObjects:@"ムービー", @"レストラン", nil];
+    
+    //テーブル
+    //渡されたデータを取り出す
     NSArray *Movie = [self select_movie];
 
+    //動画タイトル
+    NSString *MovieTitle = [NSString stringWithFormat:@"%@",[Movie valueForKeyPath:@"Movie"][@"title"]];
+    NSString *MovieCreated = [NSString stringWithFormat:@"%@",[Movie valueForKeyPath:@"Movie"][@"created"]];
+    //ユーザー情報
+    NSArray *User = [Movie valueForKeyPath:@"User"];
+    NSString *ReporterName = [NSString stringWithFormat:@"%@",[User valueForKeyPath:@"UserProfile"][@"name"]];
+    
+    //レストラン情報
+    RestDataHeader = @[@"店名",@"住所"];
+    NSString *RestName = [NSString stringWithFormat:@"%@",[Movie valueForKeyPath:@"Restaurant"][@"name"]];
+    NSString *RestAddress = [NSString stringWithFormat:@"%@",[Movie valueForKeyPath:@"Restaurant"][@"address"]];
+    
+    //名前を表示
     self.coffeeTitle.text = [NSString stringWithFormat:@"%@",[Movie valueForKeyPath:@"Movie"][@"title"]];
-    //self.descriptionText.text = [Movie valueForKeyPath:@"Restaurant"][@"name"];
+
+    //セクション１
+    MovieDataHeader = @[@"タイトル",@"レポーター",@"撮影日時"];
+    MovieData = @[MovieTitle,ReporterName,MovieCreated];
+    //セクション２
+    RestDataHeader = @[@"店名",@"住所"];
+    RestData = @[RestName,RestAddress];
+    
+    //セルの項目をまとめる
+    NSArray *datas = [NSArray arrayWithObjects:MovieData, RestData, nil];
+    dataSource = [NSDictionary dictionaryWithObjects:datas forKeys:sectionList];
+    
+    NSLog(@"%@",dataSource);
     
     //動画を表示
     self.webView.delegate = self;
@@ -34,7 +67,50 @@
 
     // アクティビティインジケータ表示
     [self startActiviryIndicatorAnimation];
+}
 
+
+//テーブル全体のセクションの数を返す
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return [sectionList count];
+}
+
+//セクション名を返す
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return [sectionList objectAtIndex:section];
+}
+
+//セクションの項目数を返す
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    NSString *sectionName = [sectionList objectAtIndex:section];
+    return [[dataSource objectForKey:sectionName] count];
+}
+
+//指定された箇所のセルを作成する
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *cellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    
+    // セルが作成されていないか?
+    if (!cell) { // yes
+        // セルを作成
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    }
+    
+    // セクション名を取得する
+    NSString *sectionName = [sectionList objectAtIndex:indexPath.section];
+    
+    // セクション名をキーにしてそのセクションの項目をすべて取得
+    NSArray *items = [dataSource objectForKey:sectionName];
+    
+    // セルにテキストを設定
+    cell.textLabel.text = [items objectAtIndex:indexPath.row];
+    
+    return cell;
 }
 
 //動画のダウンロードが始まった時

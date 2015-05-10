@@ -8,10 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DetailViewController : UIViewController<UIWebViewDelegate>
+@interface DetailViewController : UIViewController<UIWebViewDelegate,UITableViewDataSource,UITableViewDelegate>
 {
-    NSArray *_movieArray; //メンバ変数宣言
-
+    //セクション名を指定する
+    NSArray *sectionList;
+    
+    //テーブルに表示するデータを格納する変数
+    NSDictionary *dataSource;
+    
+    //ムービーに関するデータ
+    NSArray *MovieDataHeader;
+    NSArray *MovieData;
+    
+    //レストランに関するデータ
+    NSArray *RestDataHeader;
+    NSArray *RestData;
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *coffeeTitle;
@@ -19,6 +30,7 @@
 @property (nonatomic,assign) int select_num;
 @property (nonatomic,assign) NSArray* select_movie;
 
+@property (weak, nonatomic) IBOutlet UITableView *MovieTableView;
 
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 

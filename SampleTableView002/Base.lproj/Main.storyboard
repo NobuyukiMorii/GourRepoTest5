@@ -70,19 +70,27 @@
                                     <constraint firstAttribute="height" constant="250" id="w4A-Al-Rdc"/>
                                 </constraints>
                             </webView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="fla-zg-eX3">
+                                <rect key="frame" x="0.0" y="348" width="600" height="264"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="fla-zg-eX3" firstAttribute="top" secondItem="kzI-PS-juv" secondAttribute="bottom" id="CFo-iR-ZUB"/>
                             <constraint firstItem="kzI-PS-juv" firstAttribute="leading" secondItem="kKL-xB-fkn" secondAttribute="leading" id="Iat-l7-FtP"/>
                             <constraint firstItem="kzI-PS-juv" firstAttribute="top" secondItem="Ok6-Ly-MxK" secondAttribute="bottom" id="KxQ-S8-0cH"/>
+                            <constraint firstItem="fla-zg-eX3" firstAttribute="leading" secondItem="kKL-xB-fkn" secondAttribute="leading" id="MTc-sv-Xih"/>
                             <constraint firstItem="kzI-PS-juv" firstAttribute="top" secondItem="Ok6-Ly-MxK" secondAttribute="bottom" id="PCz-8X-FDN"/>
                             <constraint firstItem="Ok6-Ly-MxK" firstAttribute="leading" secondItem="kKL-xB-fkn" secondAttribute="leading" id="Uge-fq-Iu9"/>
                             <constraint firstAttribute="trailing" secondItem="kzI-PS-juv" secondAttribute="trailing" id="XVs-Pw-XfU"/>
                             <constraint firstAttribute="trailing" secondItem="Ok6-Ly-MxK" secondAttribute="trailing" id="mpA-Zk-e6o"/>
+                            <constraint firstAttribute="trailing" secondItem="fla-zg-eX3" secondAttribute="trailing" id="u34-Kq-xT8"/>
                             <constraint firstItem="Ok6-Ly-MxK" firstAttribute="top" secondItem="XjP-i0-7k2" secondAttribute="bottom" id="xNj-kY-UiB"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="MovieTableView" destination="fla-zg-eX3" id="akW-iT-gcs"/>
                         <outlet property="coffeeTitle" destination="Ok6-Ly-MxK" id="WhS-9x-Vnz"/>
                         <outlet property="webView" destination="kzI-PS-juv" id="XBw-1Y-EAc"/>
                     </connections>
