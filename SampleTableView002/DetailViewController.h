@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DetailViewController : UIViewController
+@interface DetailViewController : UIViewController<UIWebViewDelegate>
 {
     NSArray *_movieArray; //メンバ変数宣言
 

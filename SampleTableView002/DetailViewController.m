@@ -11,7 +11,8 @@
 
 
 @interface DetailViewController ()
-
+ // アクティビティインジケータ
+@property UIActivityIndicatorView *indicator;
 @end
 
 @implementation DetailViewController
@@ -26,12 +27,56 @@
     self.descriptionText.text = [Movie valueForKeyPath:@"Restaurant"][@"name"];
     
     //動画を表示
+    self.webView.delegate = self;
+    
     NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"%@",[Movie valueForKeyPath:@"Movie"][@"youtube_iframe_url"]]];
     NSURLRequest* request = [NSURLRequest requestWithURL:url];
     [self.webView loadRequest:request];
 
+    // アクティビティインジケータ表示
+    [self startActiviryIndicatorAnimation];
 
 }
+
+- (void)webViewDidStartLoad:(UIWebView *)webView {
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+}
+
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    // アクティビティインジケータ非表示
+    [self stopActivityIndicatorAnimation];
+    
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+}
+
+- (void)startActiviryIndicatorAnimation
+{
+    _indicator = [[UIActivityIndicatorView alloc] init];
+    _indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+
+    //画面の大きさを取得する
+    CGRect rect = [[UIScreen mainScreen] bounds];
+    
+    // 画面の中央に表示するようにframeを変更する
+    float w = _indicator.frame.size.width;
+    float h = _indicator.frame.size.height;
+    float x = rect.size.width/2;
+    float y = self.webView.frame.size.height/2 - h/2;
+    _indicator.frame = CGRectMake(x, y, w, h);
+    
+    _indicator.hidesWhenStopped = YES;
+    [_indicator startAnimating];
+    [self.view addSubview:_indicator];
+}
+
+// アクティビティインジケータ非表示
+- (void)stopActivityIndicatorAnimation
+{
+    [_indicator stopAnimating];
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

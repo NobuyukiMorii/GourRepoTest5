@@ -83,8 +83,6 @@
 
 //何か行が押された時DetailViewControllerに画面遷移する
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-
-    NSLog(@"Tap:%ld",indexPath.row);
     
     //遷移先画面のカプセル化（インスタンス化）
     DetailViewController *dvc = [self.storyboard instantiateViewControllerWithIdentifier:@"DetailViewController"];
