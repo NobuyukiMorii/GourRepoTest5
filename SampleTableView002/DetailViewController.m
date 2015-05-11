@@ -38,25 +38,29 @@
 
     //動画タイトル
     NSString *MovieTitle = [NSString stringWithFormat:@"%@",[Movie valueForKeyPath:@"Movie"][@"title"]];
+    NSString *MovieCount = [NSString stringWithFormat:@"%@",[Movie valueForKeyPath:@"Movie"][@"count"]];
+    NSString *Moviedescription = [NSString stringWithFormat:@"%@",[Movie valueForKeyPath:@"Movie"][@"description"]];
     NSString *MovieCreated = [NSString stringWithFormat:@"%@",[Movie valueForKeyPath:@"Movie"][@"created"]];
     //ユーザー情報
     NSArray *User = [Movie valueForKeyPath:@"User"];
     NSString *ReporterName = [NSString stringWithFormat:@"%@",[User valueForKeyPath:@"UserProfile"][@"name"]];
     
     //レストラン情報
-    RestDataHeader = @[@"店名",@"住所"];
     NSString *RestName = [NSString stringWithFormat:@"%@",[Movie valueForKeyPath:@"Restaurant"][@"name"]];
     NSString *RestAddress = [NSString stringWithFormat:@"%@",[Movie valueForKeyPath:@"Restaurant"][@"address"]];
+    NSString *RestGenre = [NSString stringWithFormat:@"%@",[Movie valueForKeyPath:@"Restaurant"][@"category_name_l"]];
+    NSString *RestStation = [NSString stringWithFormat:@"%@",[Movie valueForKeyPath:@"Restaurant"][@"access_station"]];
+    NSString *RestOpentime = [NSString stringWithFormat:@"%@",[Movie valueForKeyPath:@"Restaurant"][@"opentime"]];
     
     //名前を表示
     self.coffeeTitle.text = [NSString stringWithFormat:@"%@",[Movie valueForKeyPath:@"Movie"][@"title"]];
 
     //セクション１
-    MovieDataHeader = @[@"タイトル",@"レポーター",@"撮影日時"];
-    MovieData = @[MovieTitle,ReporterName,MovieCreated];
+    MovieDataHeader = @[@"タイトル",@"レポーター",@"説明文",@"再生回数",@"撮影日時"];
+    MovieData = @[MovieTitle,ReporterName,Moviedescription,MovieCount,MovieCreated];
     //セクション２
-    RestDataHeader = @[@"店名",@"住所"];
-    RestData = @[RestName,RestAddress];
+    RestDataHeader = @[@"店名",@"ジャンル",@"最寄駅",@"住所",@"営業時間"];
+    RestData = @[RestName,RestGenre,RestStation,RestAddress,RestOpentime];
     
     //セルの項目をまとめる
     NSArray *datas = [NSArray arrayWithObjects:MovieData, RestData, nil];
@@ -75,17 +79,10 @@
     [self startActiviryIndicatorAnimation];
 }
 
-
 //テーブル全体のセクションの数を返す
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return [sectionList count];
-}
-
-//セクション名を返す
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    return [sectionList objectAtIndex:section];
 }
 
 //セクションの項目数を返す
@@ -116,6 +113,37 @@
     cell.item.text = [items objectAtIndex:indexPath.row];
     
     return cell;
+}
+
+//カスタマイズするheaderSectionの高さ指定
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 30.0f;
+}
+
+//セクションの指定
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UIView *sectionView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 30.0f)];
+    sectionView.backgroundColor = [UIColor clearColor];
+    
+    UIScreen* screen = [UIScreen mainScreen];
+    
+    UILabel *title_l = [[UILabel alloc] init];
+    title_l.frame = CGRectMake(0, 0, screen.applicationFrame.size.width, 30);
+    title_l.textColor = [UIColor whiteColor];
+    title_l.backgroundColor = [UIColor blueColor];
+    title_l.textAlignment = NSTextAlignmentLeft;
+    title_l.font = [UIFont systemFontOfSize:13.0];
+
+    // セクション名を設定する
+    if (section == 0) {
+        title_l.text = @"Movie";
+    } else if(section == 1) {
+        title_l.text = @"Restaurant";
+    }
+    
+    [sectionView addSubview:title_l];
+    
+    return sectionView;
 }
 
 //動画のダウンロードが始まった時
