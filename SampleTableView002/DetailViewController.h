@@ -15,6 +15,7 @@
     
     //テーブルに表示するデータを格納する変数
     NSDictionary *dataSource;
+    NSDictionary *headerSource;
     
     //ムービーに関するデータ
     NSArray *MovieDataHeader;

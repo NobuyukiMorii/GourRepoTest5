@@ -57,7 +57,8 @@
     NSArray *datas = [NSArray arrayWithObjects:MovieData, RestData, nil];
     dataSource = [NSDictionary dictionaryWithObjects:datas forKeys:sectionList];
     
-    NSLog(@"%@",dataSource);
+    NSArray *headers = [NSArray arrayWithObjects:MovieDataHeader, RestDataHeader, nil];
+    headerSource = [NSDictionary dictionaryWithObjects:headers forKeys:sectionList];
     
     //動画を表示
     self.webView.delegate = self;
@@ -98,7 +99,7 @@
     // セルが作成されていないか?
     if (!cell) { // yes
         // セルを作成
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
     }
     
     // セクション名を取得する
@@ -106,9 +107,14 @@
     
     // セクション名をキーにしてそのセクションの項目をすべて取得
     NSArray *items = [dataSource objectForKey:sectionName];
+    NSArray *headerNames = [headerSource objectForKey:sectionName];
     
     // セルにテキストを設定
-    cell.textLabel.text = [items objectAtIndex:indexPath.row];
+    cell.textLabel.font = [UIFont systemFontOfSize:10.0];
+    cell.textLabel.text = [headerNames objectAtIndex:indexPath.row];
+    
+    cell.detailTextLabel.font = [UIFont systemFontOfSize:10.0];
+    cell.detailTextLabel.text = [items objectAtIndex:indexPath.row];
     
     return cell;
 }
