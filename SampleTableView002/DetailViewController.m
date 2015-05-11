@@ -7,6 +7,7 @@
 //
 
 #import "DetailViewController.h"
+#import "customTableViewCell2.h"
 //Youtube再生用
 
 
@@ -24,6 +25,10 @@
     _MovieTableView.delegate = self;
     _MovieTableView.dataSource = self;
     
+    //カスタマイズしたセルをテーブルビューにセット
+    UINib *nib = [UINib nibWithNibName:@"customCell2" bundle:nil];
+    //カスタムセルを使用しているTableViewに登録
+    [self.MovieTableView registerNib:nib forCellReuseIdentifier:@"Cell"];
     // セクション名を設定する
     sectionList =  [NSArray arrayWithObjects:@"ムービー", @"レストラン", nil];
     
@@ -94,13 +99,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *cellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    
-    // セルが作成されていないか?
-    if (!cell) { // yes
-        // セルを作成
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
-    }
+    customTableViewCell2 *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
     // セクション名を取得する
     NSString *sectionName = [sectionList objectAtIndex:indexPath.section];
@@ -110,11 +109,11 @@
     NSArray *headerNames = [headerSource objectForKey:sectionName];
     
     // セルにテキストを設定
-    cell.textLabel.font = [UIFont systemFontOfSize:10.0];
-    cell.textLabel.text = [headerNames objectAtIndex:indexPath.row];
+    cell.headerName.font = [UIFont systemFontOfSize:10.0];
+    cell.headerName.text = [headerNames objectAtIndex:indexPath.row];
     
-    cell.detailTextLabel.font = [UIFont systemFontOfSize:10.0];
-    cell.detailTextLabel.text = [items objectAtIndex:indexPath.row];
+    cell.item.font = [UIFont systemFontOfSize:10.0];
+    cell.item.text = [items objectAtIndex:indexPath.row];
     
     return cell;
 }
