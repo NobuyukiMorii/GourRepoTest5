@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>F6776C8E-8CCC-4629-B694-607CDC36B7D9</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>SampleTableView002</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>789017FE6D92CB0F6E79E92D5697AB1FD37BBAC7</key>
 		<string>https://github.com/NobuyukiMorii/GourRepoTest5.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>SampleTableView002.xcodeproj/project.xcworkspace</string>
+	<string>SampleTableView002.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>789017FE6D92CB0F6E79E92D5697AB1FD37BBAC7</key>

@@ -17,6 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // delegate 設定
     [self.serchTextField setDelegate:self];
     //テキストフィールドの改行ボタンをリターンにする
@@ -58,6 +59,9 @@
     
     //セルの再利用
     customTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifer];
+    if (cell == nil) {
+        cell = [[customTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifer];
+    }
     
     cell.title.text = [NSString stringWithFormat:@"%@",_movieArray[(long)indexPath.row][@"Movie"][@"title"]];
     cell.count.text = [NSString stringWithFormat:@"%@",_movieArray[(long)indexPath.row][@"Movie"][@"count"]];
@@ -66,6 +70,9 @@
     cell.ReporterName.text = [NSString stringWithFormat:@"%@",_movieArray[(long)indexPath.row][@"User"][@"UserProfile"][@"name"]];
 
     // URLから画像を表示
+    //一度初期化
+    cell.thumbnail.image = nil;
+    
     // この部分が重要
     dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_queue_t q_main = dispatch_get_main_queue();
