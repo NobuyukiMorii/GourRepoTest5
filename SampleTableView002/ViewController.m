@@ -73,23 +73,13 @@
     dispatch_async(q_global, ^{
         NSString *imageURL = _movieArray[(long)indexPath.row][@"Movie"][@"thumbnails_url"];
         UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL: [NSURL URLWithString: imageURL]]];
-        
+        if(!image){
+            image = [UIImage imageNamed:@"NoImage.png"];
+        }
         dispatch_async(q_main, ^{
             [cell.thumbnail setImage:image];
         });
     });
-
-    
-    
-//    NSString *urlString = [NSString stringWithFormat:@"%@",_movieArray[(long)indexPath.row][@"Movie"][@"thumbnails_url"]];
-//    NSURL *url = [NSURL URLWithString:urlString];
-//    NSData *data = [NSData dataWithContentsOfURL:url];
-//    
-//    UIImage *img = [[UIImage alloc]initWithData:data];
-//    if(!img){
-//        img = [UIImage imageNamed:@"NoImage.png"];
-//    }
-//    [cell.thumbnail setImage:img];
     
     return cell;
 }
