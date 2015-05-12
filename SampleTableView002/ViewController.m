@@ -17,6 +17,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    // 非同期表示・キャッシュ用の配列の初期化
+    self.imageCache = [NSMutableDictionary dictionary];
+    self.downloaderManager = [NSMutableDictionary dictionary];
     
     // delegate 設定
     [self.serchTextField setDelegate:self];
@@ -59,34 +63,38 @@
     
     //セルの再利用
     customTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifer];
-    if (cell == nil) {
-        cell = [[customTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifer];
-    }
-    
+
     cell.title.text = [NSString stringWithFormat:@"%@",_movieArray[(long)indexPath.row][@"Movie"][@"title"]];
     cell.count.text = [NSString stringWithFormat:@"%@",_movieArray[(long)indexPath.row][@"Movie"][@"count"]];
     cell.RestName.text = [NSString stringWithFormat:@"%@",_movieArray[(long)indexPath.row][@"Restaurant"][@"name"]];
     cell.StationName.text = [NSString stringWithFormat:@"%@",_movieArray[(long)indexPath.row][@"Restaurant"][@"access_station"]];
     cell.ReporterName.text = [NSString stringWithFormat:@"%@",_movieArray[(long)indexPath.row][@"User"][@"UserProfile"][@"name"]];
-
-    // URLから画像を表示
-    //一度初期化
-    cell.thumbnail.image = nil;
     
-    // この部分が重要
-    dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_queue_t q_main = dispatch_get_main_queue();
-    cell.imageView.image = nil;
-    dispatch_async(q_global, ^{
-        NSString *imageURL = _movieArray[(long)indexPath.row][@"Movie"][@"thumbnails_url"];
-        UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL: [NSURL URLWithString: imageURL]]];
-        if(!image){
-            image = [UIImage imageNamed:@"NoImage.png"];
+    if ([_imageCache objectForKey:indexPath]) {
+        // すでにキャッシュしてある場合
+        [cell.thumbnail setImage:[_imageCache objectForKey:indexPath]];
+        
+    } else {
+        if (_coffeeListTableView.dragging == NO && _coffeeListTableView.decelerating == NO)
+        {
+            // URLから画像を表示
+            dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+            dispatch_queue_t q_main = dispatch_get_main_queue();
+            
+            cell.imageView.image = nil;
+            
+            dispatch_async(q_global, ^{
+                NSString *imageURL = _movieArray[(long)indexPath.row][@"Movie"][@"thumbnails_url"];
+                UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL: [NSURL URLWithString: imageURL]]];
+                if(!image){
+                    image = [UIImage imageNamed:@"NoImage.png"];
+                }
+                dispatch_async(q_main, ^{
+                    [cell.thumbnail setImage:image];
+                });
+            });
         }
-        dispatch_async(q_main, ^{
-            [cell.thumbnail setImage:image];
-        });
-    });
+    }
     
     return cell;
 }
