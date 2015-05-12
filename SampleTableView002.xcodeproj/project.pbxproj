@@ -27,6 +27,7 @@
 		A439C11A1AFF7F43000C88C1 /* NoImage.png in Resources */ = {isa = PBXBuildFile; fileRef = A439C1191AFF7F43000C88C1 /* NoImage.png */; };
 		A439C11E1B0056A2000C88C1 /* customCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = A439C11D1B0056A2000C88C1 /* customCell2.xib */; };
 		A439C1241B0059CD000C88C1 /* customTableViewCell2.m in Sources */ = {isa = PBXBuildFile; fileRef = A439C1231B0059CD000C88C1 /* customTableViewCell2.m */; };
+		A439C1271B00F70E000C88C1 /* UploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A439C1261B00F70E000C88C1 /* UploadViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,8 @@
 		A439C11D1B0056A2000C88C1 /* customCell2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = customCell2.xib; sourceTree = "<group>"; };
 		A439C1221B0059CD000C88C1 /* customTableViewCell2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = customTableViewCell2.h; sourceTree = "<group>"; };
 		A439C1231B0059CD000C88C1 /* customTableViewCell2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = customTableViewCell2.m; sourceTree = "<group>"; };
+		A439C1251B00F70E000C88C1 /* UploadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadViewController.h; sourceTree = "<group>"; };
+		A439C1261B00F70E000C88C1 /* UploadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +134,8 @@
 				1BFA3D5A19F4DE03009D4768 /* ViewController.m */,
 				1BFA3D7819F4EC30009D4768 /* DetailViewController.h */,
 				1BFA3D7919F4EC30009D4768 /* DetailViewController.m */,
+				A439C1251B00F70E000C88C1 /* UploadViewController.h */,
+				A439C1261B00F70E000C88C1 /* UploadViewController.m */,
 				1BFA3D5C19F4DE03009D4768 /* Main.storyboard */,
 				1BFA3D5F19F4DE03009D4768 /* Images.xcassets */,
 				1BFA3D6119F4DE03009D4768 /* LaunchScreen.xib */,
@@ -282,6 +287,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A439C1271B00F70E000C88C1 /* UploadViewController.m in Sources */,
 				1BDEDF971ADE142B00D315F8 /* customTableViewCell.m in Sources */,
 				1BFA3D5B19F4DE03009D4768 /* ViewController.m in Sources */,
 				1BFA3D5819F4DE03009D4768 /* AppDelegate.m in Sources */,

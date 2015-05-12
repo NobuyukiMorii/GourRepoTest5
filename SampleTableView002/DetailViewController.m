@@ -7,6 +7,7 @@
 //
 
 #import "DetailViewController.h"
+#import "UploadViewController.h"
 #import "customTableViewCell2.h"
 //Youtube再生用
 
@@ -18,8 +19,26 @@
 
 @implementation DetailViewController
 
+
+- (void)upload
+{
+    UploadViewController *uploadViewController = [[UploadViewController alloc] init];
+    [[self navigationController] pushViewController:uploadViewController animated:YES];
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // タイトルとボタンのスタイルを指定した生成例
+    UIBarButtonItem *btn =
+    [[UIBarButtonItem alloc]
+     initWithTitle:@"Upload"
+     style:UIBarButtonItemStylePlain
+     target:self  // デリゲートのターゲットを指定
+     action:@selector(upload)
+     ];
+     self.navigationItem.rightBarButtonItem = btn;
     
     //テーブルのデリゲート
     _MovieTableView.delegate = self;

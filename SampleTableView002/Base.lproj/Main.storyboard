@@ -99,6 +99,38 @@
             </objects>
             <point key="canvasLocation" x="1658" y="136"/>
         </scene>
+        <!--Upload View Controller-->
+        <scene sceneID="srj-dG-94q">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yk4-aT-m61" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="bda-IA-kMc" customClass="UploadViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Bre-AE-aLX"/>
+                        <viewControllerLayoutGuide type="bottom" id="DPS-Ys-vdy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="I61-vr-2s5">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0s9-IO-Wgl">
+                                <rect key="frame" x="-1" y="44" width="600" height="556"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="0s9-IO-Wgl" secondAttribute="trailing" id="2uJ-DM-7wC"/>
+                            <constraint firstItem="0s9-IO-Wgl" firstAttribute="leading" secondItem="I61-vr-2s5" secondAttribute="leading" id="ADM-7u-imz"/>
+                            <constraint firstItem="DPS-Ys-vdy" firstAttribute="top" secondItem="0s9-IO-Wgl" secondAttribute="bottom" id="L8K-52-pD1"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="uploadWebView" destination="0s9-IO-Wgl" id="raK-1Q-XTc"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="2319" y="136"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="X4i-9o-Ah7">
             <objects>
