@@ -26,7 +26,12 @@
     wv.scalesPageToFit = YES;
     [self.view addSubview:wv];
     
-    NSURL *url = [NSURL URLWithString:@"http://localhost:8888/GourRepoM2/Movies/selectRestForAddMovie"];
+    NSLog(@"%@",_RestId);
+    NSString *str1 = @"http://localhost:8888/GourRepoM2/Movies/add/";
+    NSString *str2 = _RestId;
+    NSString *str3 = [str1 stringByAppendingString:str2];
+                      
+    NSURL *url = [NSURL URLWithString:str3];
     NSURLRequest *req = [NSURLRequest requestWithURL:url];
     [wv loadRequest:req];
 

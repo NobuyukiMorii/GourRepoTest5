@@ -66,14 +66,30 @@
     cell.ReporterName.text = [NSString stringWithFormat:@"%@",_movieArray[(long)indexPath.row][@"User"][@"UserProfile"][@"name"]];
 
     // URLから画像を表示
-    NSString *urlString = [NSString stringWithFormat:@"%@",_movieArray[(long)indexPath.row][@"Movie"][@"thumbnails_url"]];
-    NSURL *url = [NSURL URLWithString:urlString];
-    NSData *data = [NSData dataWithContentsOfURL:url];
-    UIImage *img = [[UIImage alloc]initWithData:data];
-    if(!img){
-        img = [UIImage imageNamed:@"NoImage.png"];
-    }
-    [cell.thumbnail setImage:img];
+    // この部分が重要
+    dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t q_main = dispatch_get_main_queue();
+    cell.imageView.image = nil;
+    dispatch_async(q_global, ^{
+        NSString *imageURL = _movieArray[(long)indexPath.row][@"Movie"][@"thumbnails_url"];
+        UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL: [NSURL URLWithString: imageURL]]];
+        
+        dispatch_async(q_main, ^{
+            [cell.thumbnail setImage:image];
+        });
+    });
+
+    
+    
+//    NSString *urlString = [NSString stringWithFormat:@"%@",_movieArray[(long)indexPath.row][@"Movie"][@"thumbnails_url"]];
+//    NSURL *url = [NSURL URLWithString:urlString];
+//    NSData *data = [NSData dataWithContentsOfURL:url];
+//    
+//    UIImage *img = [[UIImage alloc]initWithData:data];
+//    if(!img){
+//        img = [UIImage imageNamed:@"NoImage.png"];
+//    }
+//    [cell.thumbnail setImage:img];
     
     return cell;
 }

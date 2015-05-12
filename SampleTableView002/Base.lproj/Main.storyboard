@@ -103,7 +103,7 @@
         <scene sceneID="srj-dG-94q">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yk4-aT-m61" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="bda-IA-kMc" customClass="UploadViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="uploadViewController" id="bda-IA-kMc" customClass="UploadViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Bre-AE-aLX"/>
                         <viewControllerLayoutGuide type="bottom" id="DPS-Ys-vdy"/>

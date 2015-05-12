@@ -22,8 +22,11 @@
 
 - (void)upload
 {
-    UploadViewController *uploadViewController = [[UploadViewController alloc] init];
-    [[self navigationController] pushViewController:uploadViewController animated:YES];
+    //UploadViewController *uploadViewController = [[UploadViewController alloc] init];
+    //遷移先画面のカプセル化（インスタンス化）
+    UploadViewController *upc = [self.storyboard instantiateViewControllerWithIdentifier:@"uploadViewController"];
+    upc.RestId = RestId;
+    [[self navigationController] pushViewController:upc animated:YES];
 }
 
 
@@ -65,6 +68,7 @@
     NSString *ReporterName = [NSString stringWithFormat:@"%@",[User valueForKeyPath:@"UserProfile"][@"name"]];
     
     //レストラン情報
+    RestId = [NSString stringWithFormat:@"%@",[Movie valueForKeyPath:@"Restaurant"][@"id"]];
     NSString *RestName = [NSString stringWithFormat:@"%@",[Movie valueForKeyPath:@"Restaurant"][@"name"]];
     NSString *RestAddress = [NSString stringWithFormat:@"%@",[Movie valueForKeyPath:@"Restaurant"][@"address"]];
     NSString *RestGenre = [NSString stringWithFormat:@"%@",[Movie valueForKeyPath:@"Restaurant"][@"category_name_l"]];

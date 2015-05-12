@@ -11,6 +11,6 @@
 @interface UploadViewController : UIViewController<UIWebViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIWebView *uploadWebView;
-
+@property (nonatomic,assign) NSString *RestId;
 
 @end

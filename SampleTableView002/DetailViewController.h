@@ -24,6 +24,7 @@
     //レストランに関するデータ
     NSArray *RestDataHeader;
     NSArray *RestData;
+    NSString *RestId;
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *coffeeTitle;
