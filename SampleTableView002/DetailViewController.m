@@ -152,9 +152,9 @@
     
     UILabel *title_l = [[UILabel alloc] init];
     title_l.frame = CGRectMake(0, 0, screen.applicationFrame.size.width, 30);
-    title_l.textColor = [UIColor whiteColor];
-    title_l.backgroundColor = [UIColor blueColor];
-    title_l.textAlignment = NSTextAlignmentLeft;
+    title_l.textColor = [UIColor blackColor];
+    title_l.backgroundColor = [UIColor colorWithRed:0.93 green:0.94 blue:0.95 alpha:1.0];
+    title_l.textAlignment = NSTextAlignmentCenter;
     title_l.font = [UIFont systemFontOfSize:13.0];
 
     // セクション名を設定する
