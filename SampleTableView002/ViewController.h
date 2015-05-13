@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
+@interface ViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UISearchBarDelegate>
 {
     NSArray *_movieArray;   //メンバ変数宣言
     UIView *uv_load;        //LoadingView(通信中にぐるぐる回るやつ)
@@ -18,7 +18,6 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *coffeeListTableView;
 
-@property (weak, nonatomic) IBOutlet UITextField *serchTextField;
 - (IBAction)serchMovie:(id)sender;
 
 //一度読み込んだ画像をキャッシュして、再び読み込まない

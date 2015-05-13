@@ -17,15 +17,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
+    UISearchBar *searchBar = [[UISearchBar alloc] init];
+    searchBar.tintColor = [UIColor darkGrayColor];
+    searchBar.placeholder = @"検索";
+    searchBar.keyboardType = UIKeyboardTypeDefault;
+    searchBar.delegate = self;
+    
+    // UINavigationBar上に、UISearchBarを追加
+    self.navigationItem.titleView = searchBar;
+    self.navigationItem.titleView.frame = CGRectMake(0, 0, 320, 44);
+    
     // 非同期表示・キャッシュ用の配列の初期化
     self.imageCache = [NSMutableDictionary dictionary];
     self.downloaderManager = [NSMutableDictionary dictionary];
-    
-    // delegate 設定
-    [self.serchTextField setDelegate:self];
-    //テキストフィールドの改行ボタンをリターンにする
-    self.serchTextField.returnKeyType = UIReturnKeyDone;
     
     _coffeeListTableView.delegate = self;
     _coffeeListTableView.dataSource = self;
@@ -119,11 +124,17 @@
 }
 
 //リターンされた時に発動
-- (IBAction)serchMovie:(id)sender {
-    //キーボードをとじる
-    [self.serchTextField resignFirstResponder];
+- (void) searchItem:(NSString *) searchText {
+    // 検索処理
+}
 
-    
+- (void) searchBarSearchButtonClicked: (UISearchBar *) searchBar {
+    [searchBar resignFirstResponder];
+}
+
+//検索
+- (void) searchBar:(UISearchBar *)searchBar textDidChange:(NSString *) searchText {
+    NSLog(@"serch text=%@", searchText);
     
     // 送信したいURLを作成する
     NSURL *url = [NSURL URLWithString:@"http://localhost:8888/GourRepoM2/ApiMovies/returnMoviesJson.json"];
@@ -133,8 +144,7 @@
     request.HTTPMethod = @"POST";
     
     // 送付したい内容を、文字列として作成する
-    NSString *areaname = self.serchTextField.text;
-    NSString *body = [NSString stringWithFormat:@"areaname=%@", areaname];
+    NSString *body = [NSString stringWithFormat:@"areaname=%@", searchText];
     
     // HTTPBodyには、NSData型で設定する
     request.HTTPBody = [body dataUsingEncoding:NSUTF8StringEncoding];
@@ -163,7 +173,6 @@
         [uv_load addSubview:aci_loading];
         [self.view addSubview:uv_load];
     }
-    
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
