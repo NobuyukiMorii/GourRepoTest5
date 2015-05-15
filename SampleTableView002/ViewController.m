@@ -190,12 +190,6 @@
     
     //データがない場合
     if(_movieArray.count == 0){
-        //アラートビューを出す
-        // １行で書くタイプ（１ボタンタイプ）
-        UIAlertView *alert =
-        [[UIAlertView alloc] initWithTitle:@"" message:@"ムービーがありませんでした。"
-                                  delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
         
         //通信を中断
         [connection cancel];

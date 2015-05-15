@@ -18,8 +18,6 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *coffeeListTableView;
 
-- (IBAction)serchMovie:(id)sender;
-
 //一度読み込んだ画像をキャッシュして、再び読み込まない
 @property (nonatomic, strong) NSMutableDictionary *imageCache;
 @property (nonatomic, strong) NSMutableDictionary *downloaderManager;

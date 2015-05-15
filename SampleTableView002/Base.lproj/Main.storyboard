@@ -16,12 +16,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="fze-ha-xFA">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="fze-ha-xFA">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="607"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="fze-ha-xFA" secondAttribute="bottom" id="BhD-yc-IYz"/>
+                            <constraint firstAttribute="trailing" secondItem="fze-ha-xFA" secondAttribute="trailing" id="bZB-38-utf"/>
+                            <constraint firstItem="fze-ha-xFA" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="eA1-3y-Zk9"/>
+                            <constraint firstItem="fze-ha-xFA" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="vYB-W4-Jcg"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="4wk-6t-vZL"/>
                     <connections>
@@ -70,22 +76,23 @@
                                     <constraint firstAttribute="height" constant="250" id="w4A-Al-Rdc"/>
                                 </constraints>
                             </webView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="fla-zg-eX3">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="fla-zg-eX3">
                                 <rect key="frame" x="0.0" y="348" width="600" height="264"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="fla-zg-eX3" firstAttribute="top" secondItem="kzI-PS-juv" secondAttribute="bottom" id="CFo-iR-ZUB"/>
+                            <constraint firstItem="fla-zg-eX3" firstAttribute="top" secondItem="kzI-PS-juv" secondAttribute="bottom" id="EdG-9C-9RL"/>
                             <constraint firstItem="kzI-PS-juv" firstAttribute="leading" secondItem="kKL-xB-fkn" secondAttribute="leading" id="Iat-l7-FtP"/>
+                            <constraint firstAttribute="trailing" secondItem="fla-zg-eX3" secondAttribute="trailing" id="JvF-q4-UkZ"/>
                             <constraint firstItem="kzI-PS-juv" firstAttribute="top" secondItem="Ok6-Ly-MxK" secondAttribute="bottom" id="KxQ-S8-0cH"/>
-                            <constraint firstItem="fla-zg-eX3" firstAttribute="leading" secondItem="kKL-xB-fkn" secondAttribute="leading" id="MTc-sv-Xih"/>
+                            <constraint firstItem="fla-zg-eX3" firstAttribute="leading" secondItem="kKL-xB-fkn" secondAttribute="leading" id="LyG-CR-Alu"/>
                             <constraint firstItem="kzI-PS-juv" firstAttribute="top" secondItem="Ok6-Ly-MxK" secondAttribute="bottom" id="PCz-8X-FDN"/>
                             <constraint firstItem="Ok6-Ly-MxK" firstAttribute="leading" secondItem="kKL-xB-fkn" secondAttribute="leading" id="Uge-fq-Iu9"/>
                             <constraint firstAttribute="trailing" secondItem="kzI-PS-juv" secondAttribute="trailing" id="XVs-Pw-XfU"/>
+                            <constraint firstAttribute="bottom" secondItem="fla-zg-eX3" secondAttribute="bottom" id="k8t-b4-Bms"/>
                             <constraint firstAttribute="trailing" secondItem="Ok6-Ly-MxK" secondAttribute="trailing" id="mpA-Zk-e6o"/>
-                            <constraint firstAttribute="trailing" secondItem="fla-zg-eX3" secondAttribute="trailing" id="u34-Kq-xT8"/>
                             <constraint firstItem="Ok6-Ly-MxK" firstAttribute="top" secondItem="XjP-i0-7k2" secondAttribute="bottom" id="xNj-kY-UiB"/>
                         </constraints>
                     </view>
@@ -111,20 +118,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0s9-IO-Wgl">
-                                <rect key="frame" x="-1" y="44" width="600" height="556"/>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0s9-IO-Wgl">
+                                <rect key="frame" x="-1" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="0s9-IO-Wgl" secondAttribute="trailing" id="2uJ-DM-7wC"/>
-                            <constraint firstItem="0s9-IO-Wgl" firstAttribute="leading" secondItem="I61-vr-2s5" secondAttribute="leading" id="ADM-7u-imz"/>
-                            <constraint firstItem="DPS-Ys-vdy" firstAttribute="top" secondItem="0s9-IO-Wgl" secondAttribute="bottom" id="L8K-52-pD1"/>
-                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="uploadWebView" destination="0s9-IO-Wgl" id="raK-1Q-XTc"/>
+                        <outlet property="uploadWebView" destination="0s9-IO-Wgl" id="ehh-93-QLY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yk4-aT-m61" userLabel="First Responder" sceneMemberID="firstResponder"/>

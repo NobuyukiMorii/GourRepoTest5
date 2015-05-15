@@ -14,29 +14,70 @@
 
 @implementation UploadViewController
 
+-(void)refresh {
+    [self.uploadWebView reload];
+    if (self.uploadWebView) {
+        if ([self.uploadWebView canGoBack]) {
+            [self.uploadWebView reload];
+        } else {
+            
+            //最初に呼び出すのと同じページを読み込む処理
+            //[self loadFirstPage];
+            NSLog(@"%@",@"ssss");
+            //画面の大きさを取得する
+            UIWebView *wv = [[UIWebView alloc] init];
+            wv.delegate = self;
+            
+            //ステータスバーの高さ
+            float statusHeight = [[UIApplication sharedApplication] statusBarFrame].size.height;
+            
+            wv.frame = CGRectMake(0, self.navigationController.navigationBar.bounds.size.height+statusHeight, self.view.bounds.size.width, self.view.bounds.size.height-self.navigationController.navigationBar.bounds.size.height-statusHeight);
+            wv.scalesPageToFit = YES;
+            [self.view addSubview:wv];
+            
+            NSString* presenturl = [self.uploadWebView stringByEvaluatingJavaScriptFromString:@"document.URL"];
+            NSLog(@"%@",presenturl);
+            
+            NSString *str = @"http://localhost:8888/GourRepoM2/Movies/selectRestForAddMovie";
+            NSURL *url = [NSURL URLWithString:str];
+            NSURLRequest *req = [NSURLRequest requestWithURL:url];
+            [wv loadRequest:req];
+        }
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //画面の大きさを取得する
-    UIScreen* screen = [UIScreen mainScreen];
+    //リフレッシュボタンを追加
+    UIBarButtonItem *btn = [[UIBarButtonItem alloc]
+                            initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
+                            target:self
+                            action:@selector(refresh)
+                            ];
+    // ナビゲーションバーの右に追加する。
+    self.navigationItem.rightBarButtonItem = btn;
     
+    //画面の大きさを取得する
     UIWebView *wv = [[UIWebView alloc] init];
     wv.delegate = self;
-    wv.frame = CGRectMake(0, 0, screen.applicationFrame.size.width, screen.applicationFrame.size.height);
+    
+    //ステータスバーの高さ
+    float statusHeight = [[UIApplication sharedApplication] statusBarFrame].size.height;
+    
+    wv.frame = CGRectMake(0, self.navigationController.navigationBar.bounds.size.height+statusHeight, self.view.bounds.size.width, self.view.bounds.size.height-self.navigationController.navigationBar.bounds.size.height-statusHeight);
     wv.scalesPageToFit = YES;
     [self.view addSubview:wv];
     
     NSLog(@"%@",_RestId);
-    NSString *str1 = @"http://localhost:8888/GourRepoM2/Movies/add/";
-    NSString *str2 = _RestId;
-    NSString *str3 = [str1 stringByAppendingString:str2];
-                      
-    NSURL *url = [NSURL URLWithString:str3];
+    NSString *str = @"http://localhost:8888/GourRepoM2/Movies/selectRestForAddMovie";
+    NSURL *url = [NSURL URLWithString:str];
     NSURLRequest *req = [NSURLRequest requestWithURL:url];
     [wv loadRequest:req];
 
     
 }
+
 
 // ページ読込開始時にインジケータをくるくるさせる
 -(void)webViewDidStartLoad:(UIWebView*)webView{
