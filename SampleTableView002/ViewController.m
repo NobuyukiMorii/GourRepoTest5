@@ -43,7 +43,7 @@
     //カスタムセルを使用しているTableViewに登録
     [self.coffeeListTableView registerNib:nib forCellReuseIdentifier:@"Cell"];
     
-    NSString * urlString = [NSString stringWithFormat:@"http://localhost:8888/GourRepoM2/ApiMovies/returnMoviesJson.json"];
+    NSString * urlString = [NSString stringWithFormat:@"http://mory.weblike.jp/GourRepoM2/ApiMovies/returnMoviesJson.json"];
     NSURL * url = [NSURL URLWithString:urlString];
     NSData * data = [NSData dataWithContentsOfURL:url];
     NSArray *array = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
@@ -134,14 +134,23 @@
 
 //検索
 - (void) searchBar:(UISearchBar *)searchBar textDidChange:(NSString *) searchText {
+    //Loading非表示
+    uv_load.hidden = true;
+    
     NSLog(@"serch text=%@", searchText);
     
     // 送信したいURLを作成する
-    NSURL *url = [NSURL URLWithString:@"http://localhost:8888/GourRepoM2/ApiMovies/returnMoviesJson.json"];
+    //NSURL *url = [NSURL URLWithString:@"http://localhost:8888/GourRepoM2/ApiMovies/returnMoviesJson.json"];
+    //NSURL *url = [NSURL URLWithString:@"http://mory.weblike.jp/GourRepoM2/ApiMovies/returnMoviesJson.json"];
+    NSURL *url = [NSURL URLWithString:@"http://mory.weblike.jp/Grepo.json"];
+    
     // Mutableなインスタンスを作成し、インスタンスの内容を変更できるようにする
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
     // MethodにPOSTを指定する。
     request.HTTPMethod = @"POST";
+    
+    //タイムアウトの秒数を設定
+    request.timeoutInterval = 240;
     
     // 送付したい内容を、文字列として作成する
     NSString *body = [NSString stringWithFormat:@"areaname=%@", searchText];
@@ -184,10 +193,12 @@
 
     // 受信したデータを追加していく
     [self.receivedData appendData:data];
+    NSLog(@"%@",data);
     NSArray *array = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+    NSLog(@"%@",array);
     NSString *message = [array valueForKeyPath:@"message"];
     _movieArray = [message valueForKeyPath:@"result"];
-    
+    //NSLog(@"%ld",_movieArray.count);
     //データがない場合
     if(_movieArray.count == 0){
         
@@ -197,7 +208,6 @@
         //Loading非表示
         uv_load.hidden = true;
     }
-    NSLog(@"%@",_movieArray);
 }
 
 
