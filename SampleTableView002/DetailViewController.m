@@ -100,6 +100,7 @@
 
     // アクティビティインジケータ表示
     [self startActiviryIndicatorAnimation];
+
 }
 
 //テーブル全体のセクションの数を返す
@@ -191,7 +192,6 @@
     [alert show];
     // アクティビティインジケータ非表示
     [self stopActivityIndicatorAnimation];
-    
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 

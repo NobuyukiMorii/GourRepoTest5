@@ -28,6 +28,12 @@
 		A439C11E1B0056A2000C88C1 /* customCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = A439C11D1B0056A2000C88C1 /* customCell2.xib */; };
 		A439C1241B0059CD000C88C1 /* customTableViewCell2.m in Sources */ = {isa = PBXBuildFile; fileRef = A439C1231B0059CD000C88C1 /* customTableViewCell2.m */; };
 		A439C1271B00F70E000C88C1 /* UploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A439C1261B00F70E000C88C1 /* UploadViewController.m */; };
+		A4FFED9C1B0C31130058D399 /* Images-2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4FFED9B1B0C31130058D399 /* Images-2.xcassets */; };
+		A4FFED9E1B0C32330058D399 /* Images-3.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4FFED9D1B0C32330058D399 /* Images-3.xcassets */; };
+		A4FFEDA51B0C5F0F0058D399 /* Gourrepo4.png in Resources */ = {isa = PBXBuildFile; fileRef = A4FFEDA11B0C5F0F0058D399 /* Gourrepo4.png */; };
+		A4FFEDA61B0C5F0F0058D399 /* Gourrepo5.png in Resources */ = {isa = PBXBuildFile; fileRef = A4FFEDA21B0C5F0F0058D399 /* Gourrepo5.png */; };
+		A4FFEDA71B0C5F0F0058D399 /* Gourrepo6.png in Resources */ = {isa = PBXBuildFile; fileRef = A4FFEDA31B0C5F0F0058D399 /* Gourrepo6.png */; };
+		A4FFEDA81B0C5F0F0058D399 /* Gourrepo6plus.png in Resources */ = {isa = PBXBuildFile; fileRef = A4FFEDA41B0C5F0F0058D399 /* Gourrepo6plus.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +78,12 @@
 		A439C1231B0059CD000C88C1 /* customTableViewCell2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = customTableViewCell2.m; sourceTree = "<group>"; };
 		A439C1251B00F70E000C88C1 /* UploadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadViewController.h; sourceTree = "<group>"; };
 		A439C1261B00F70E000C88C1 /* UploadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadViewController.m; sourceTree = "<group>"; };
+		A4FFED9B1B0C31130058D399 /* Images-2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images-2.xcassets"; sourceTree = "<group>"; };
+		A4FFED9D1B0C32330058D399 /* Images-3.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images-3.xcassets"; sourceTree = "<group>"; };
+		A4FFEDA11B0C5F0F0058D399 /* Gourrepo4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gourrepo4.png; sourceTree = "<group>"; };
+		A4FFEDA21B0C5F0F0058D399 /* Gourrepo5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gourrepo5.png; sourceTree = "<group>"; };
+		A4FFEDA31B0C5F0F0058D399 /* Gourrepo6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gourrepo6.png; sourceTree = "<group>"; };
+		A4FFEDA41B0C5F0F0058D399 /* Gourrepo6plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gourrepo6plus.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +107,10 @@
 		1BDEDF861ADE13B300D315F8 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				A4FFEDA11B0C5F0F0058D399 /* Gourrepo4.png */,
+				A4FFEDA21B0C5F0F0058D399 /* Gourrepo5.png */,
+				A4FFEDA31B0C5F0F0058D399 /* Gourrepo6.png */,
+				A4FFEDA41B0C5F0F0058D399 /* Gourrepo6plus.png */,
 				A439C1191AFF7F43000C88C1 /* NoImage.png */,
 				1BDEDF871ADE13B300D315F8 /* Italy.png */,
 				1BDEDF881ADE13B300D315F8 /* Japan.png */,
@@ -146,6 +162,8 @@
 				1BDEDF961ADE142B00D315F8 /* customTableViewCell.m */,
 				A439C1221B0059CD000C88C1 /* customTableViewCell2.h */,
 				A439C1231B0059CD000C88C1 /* customTableViewCell2.m */,
+				A4FFED9B1B0C31130058D399 /* Images-2.xcassets */,
+				A4FFED9D1B0C32330058D399 /* Images-3.xcassets */,
 			);
 			path = SampleTableView002;
 			sourceTree = "<group>";
@@ -257,12 +275,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4FFEDA81B0C5F0F0058D399 /* Gourrepo6plus.png in Resources */,
 				1BDEDF941ADE13B300D315F8 /* star5.png in Resources */,
 				1BDEDF931ADE13B300D315F8 /* star4.png in Resources */,
+				A4FFED9C1B0C31130058D399 /* Images-2.xcassets in Resources */,
+				A4FFEDA61B0C5F0F0058D399 /* Gourrepo5.png in Resources */,
 				1BDEDF911ADE13B300D315F8 /* star2.png in Resources */,
+				A4FFEDA71B0C5F0F0058D399 /* Gourrepo6.png in Resources */,
 				1BDEDF921ADE13B300D315F8 /* star3.png in Resources */,
 				1BFA3D5E19F4DE03009D4768 /* Main.storyboard in Resources */,
 				1BDEDF8E1ADE13B300D315F8 /* Italy.png in Resources */,
+				A4FFEDA51B0C5F0F0058D399 /* Gourrepo4.png in Resources */,
+				A4FFED9E1B0C32330058D399 /* Images-3.xcassets in Resources */,
 				1BFA3D6319F4DE03009D4768 /* LaunchScreen.xib in Resources */,
 				1BDEDF851ADE12F100D315F8 /* customCell.xib in Resources */,
 				1BDEDF901ADE13B300D315F8 /* star1.png in Resources */,
@@ -415,6 +439,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = SampleTableView002/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -425,6 +450,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = SampleTableView002/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

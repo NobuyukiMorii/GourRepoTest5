@@ -45,11 +45,16 @@
     
     NSString * urlString = [NSString stringWithFormat:@"http://mory.weblike.jp/GourRepoM2/ApiMovies/returnMoviesJson.json"];
     NSURL * url = [NSURL URLWithString:urlString];
+    //ステータスバーのぐるぐる表示
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     NSData * data = [NSData dataWithContentsOfURL:url];
     NSArray *array = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
     
     NSString *message = [array valueForKeyPath:@"message"];
     _movieArray = [message valueForKeyPath:@"result"];
+    
+    //ステータスバーのぐるぐる非表示
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     
 }
 
@@ -136,35 +141,17 @@
 - (void) searchBar:(UISearchBar *)searchBar textDidChange:(NSString *) searchText {
     //Loading非表示
     uv_load.hidden = true;
+    searchText = [searchText stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
-    NSLog(@"serch text=%@", searchText);
+    if (![searchText isEqualToString:@""]){
+        
+        NSLog(@"%@",@"あるよ");
     
-    // 送信したいURLを作成する
-    //NSURL *url = [NSURL URLWithString:@"http://localhost:8888/GourRepoM2/ApiMovies/returnMoviesJson.json"];
-    //NSURL *url = [NSURL URLWithString:@"http://mory.weblike.jp/GourRepoM2/ApiMovies/returnMoviesJson.json"];
-    NSURL *url = [NSURL URLWithString:@"http://mory.weblike.jp/Grepo.json"];
-    
-    // Mutableなインスタンスを作成し、インスタンスの内容を変更できるようにする
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
-    // MethodにPOSTを指定する。
-    request.HTTPMethod = @"POST";
-    
-    //タイムアウトの秒数を設定
-    request.timeoutInterval = 240;
-    
-    // 送付したい内容を、文字列として作成する
-    NSString *body = [NSString stringWithFormat:@"areaname=%@", searchText];
-    
-    // HTTPBodyには、NSData型で設定する
-    request.HTTPBody = [body dataUsingEncoding:NSUTF8StringEncoding];
-    
-    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-    
-    // 作成に失敗する場合には、リクエストが送信されないので
-    // チェックする
-    if (!connection) {
-        NSLog(@"connection error.");
-    } else {
+        // 送信したいURLを作成する
+        NSString *str1 = @"http://mory.weblike.jp/GourRepoM2/ApiMovies/returnMoviesJsonGET.json?areaname=";
+        str1 = [str1 stringByAppendingString: searchText];
+        NSURL *url2 = [NSURL URLWithString:str1];
+        
         //Loadingを表示するView(通信中にぐるぐる回るやつ) 設定
         UIScreen *sc = [UIScreen mainScreen];
         uv_load = [[UIView alloc] initWithFrame:CGRectMake(0,0,sc.applicationFrame.size.width, sc.applicationFrame.size.height)];
@@ -181,44 +168,36 @@
         //Loading表示
         [uv_load addSubview:aci_loading];
         [self.view addSubview:uv_load];
-    }
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
-    // データの長さを0で初期化
-    [self.receivedData setLength:0];
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
-
-    // 受信したデータを追加していく
-    [self.receivedData appendData:data];
-    NSLog(@"%@",data);
-    NSArray *array = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-    NSLog(@"%@",array);
-    NSString *message = [array valueForKeyPath:@"message"];
-    _movieArray = [message valueForKeyPath:@"result"];
-    //NSLog(@"%ld",_movieArray.count);
-    //データがない場合
-    if(_movieArray.count == 0){
         
-        //通信を中断
-        [connection cancel];
+        //ステータスバーのぐるぐる表示
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
         
-        //Loading非表示
-        uv_load.hidden = true;
+        NSData * data = [NSData dataWithContentsOfURL:url2];
+        NSArray *array = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+        NSString *message = [array valueForKeyPath:@"message"];
+        _movieArray = [message valueForKeyPath:@"result"];
+        
+        if(!_movieArray){
+            NSLog(@"connection error.");
+            //Loading非表示
+            uv_load.hidden = true;
+        } else {
+            if(_movieArray.count == 0){
+               NSLog(@"connection error.");
+                //Loading非表示
+                uv_load.hidden = true;
+            } else {
+                //テーブルをリフレッシュする
+                [self.coffeeListTableView reloadData];
+                //Loading非表示
+                uv_load.hidden = true;
+                
+                NSLog(@"Did finish loading!");
+            }
+        }
+        //ステータスバーのぐるぐる非表示
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     }
-}
-
-
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-
-    //テーブルをリフレッシュする
-    [self.coffeeListTableView reloadData];
-    //Loading非表示
-    uv_load.hidden = true;
-    
-    NSLog(@"Did finish loading!");
 }
 
 @end
