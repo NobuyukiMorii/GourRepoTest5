@@ -23,6 +23,9 @@
     searchBar.placeholder = @"検索";
     searchBar.keyboardType = UIKeyboardTypeDefault;
     searchBar.delegate = self;
+
+    // UISeachBar(self.searchBar)の検索ボタンを常に有効にする
+    [self getTextFieldFromView:searchBar].enablesReturnKeyAutomatically = NO;
     
     // UINavigationBar上に、UISearchBarを追加
     self.navigationItem.titleView = searchBar;
@@ -198,6 +201,21 @@
         //ステータスバーのぐるぐる非表示
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     }
+}
+
+// UISearchBar内のUITextFieldを取得する
+- (UITextField *)getTextFieldFromView:(UIView *)view {
+    for (UIView *subview in view.subviews) {
+        if ([subview isKindOfClass:[UITextField class]]) {
+            return (UITextField *)subview;
+        } else {
+            UITextField *textField = [self getTextFieldFromView:subview];
+            if (textField) {
+                return textField;
+            }
+        }
+    }
+    return nil;
 }
 
 @end
