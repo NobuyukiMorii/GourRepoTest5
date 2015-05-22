@@ -29,7 +29,7 @@
     [self.view addSubview:wv];
     
     NSLog(@"%@",_RestId);
-    NSString *str = @"http://mory.weblike.jp/GourRepoM2/Movies/selectRestForAddMovie";
+    NSString *str = @"http://localhost:8888/GourRepoM2/Movies/selectRestForAddMovie";
     NSURL *url = [NSURL URLWithString:str];
     NSURLRequest *req = [NSURLRequest requestWithURL:url];
     [wv loadRequest:req];
@@ -38,12 +38,13 @@
 }
 
 
-// ページ読込開始時にインジケータをくるくるさせる
+// ページ読込開始時
 -(void)webViewDidStartLoad:(UIWebView*)webView{
+    //インジケータをくるくるさせる
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
  }
 
-// ページ読込完了時にインジケータを非表示にする
+// ページ読込完了時
 -(void)webViewDidFinishLoad:(UIWebView*)webView{
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
@@ -51,6 +52,13 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
+    
+    //NSLog(@"web view string 's  is %@",request.URL.absoluteString);
+    
+    return YES;
 }
 
 /*
