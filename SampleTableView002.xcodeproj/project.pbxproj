@@ -24,6 +24,11 @@
 		1BFA3D6319F4DE03009D4768 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BFA3D6119F4DE03009D4768 /* LaunchScreen.xib */; };
 		1BFA3D6F19F4DE03009D4768 /* SampleTableView002Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BFA3D6E19F4DE03009D4768 /* SampleTableView002Tests.m */; };
 		1BFA3D7A19F4EC30009D4768 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BFA3D7919F4EC30009D4768 /* DetailViewController.m */; };
+		A42C4A291B1175950075E140 /* GTMHTTPFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = A42C4A281B1175950075E140 /* GTMHTTPFetcher.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A42C4A2E1B1176140075E140 /* GTMOAuth2SignIn.m in Sources */ = {isa = PBXBuildFile; fileRef = A42C4A2B1B1176140075E140 /* GTMOAuth2SignIn.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A42C4A2F1B1176140075E140 /* GTMOAuth2Authentication.m in Sources */ = {isa = PBXBuildFile; fileRef = A42C4A2C1B1176140075E140 /* GTMOAuth2Authentication.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A42C4A331B1176340075E140 /* GTMOAuth2ViewControllerTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = A42C4A311B1176340075E140 /* GTMOAuth2ViewControllerTouch.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A42C4A341B1176340075E140 /* GTMOAuth2ViewTouch.xib in Resources */ = {isa = PBXBuildFile; fileRef = A42C4A321B1176340075E140 /* GTMOAuth2ViewTouch.xib */; };
 		A439C11A1AFF7F43000C88C1 /* NoImage.png in Resources */ = {isa = PBXBuildFile; fileRef = A439C1191AFF7F43000C88C1 /* NoImage.png */; };
 		A439C11E1B0056A2000C88C1 /* customCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = A439C11D1B0056A2000C88C1 /* customCell2.xib */; };
 		A439C1241B0059CD000C88C1 /* customTableViewCell2.m in Sources */ = {isa = PBXBuildFile; fileRef = A439C1231B0059CD000C88C1 /* customTableViewCell2.m */; };
@@ -34,6 +39,8 @@
 		A4FFEDA61B0C5F0F0058D399 /* Gourrepo5.png in Resources */ = {isa = PBXBuildFile; fileRef = A4FFEDA21B0C5F0F0058D399 /* Gourrepo5.png */; };
 		A4FFEDA71B0C5F0F0058D399 /* Gourrepo6.png in Resources */ = {isa = PBXBuildFile; fileRef = A4FFEDA31B0C5F0F0058D399 /* Gourrepo6.png */; };
 		A4FFEDA81B0C5F0F0058D399 /* Gourrepo6plus.png in Resources */ = {isa = PBXBuildFile; fileRef = A4FFEDA41B0C5F0F0058D399 /* Gourrepo6plus.png */; };
+		A4FFEDC71B1085BA0058D399 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4FFEDC61B1085BA0058D399 /* Security.framework */; };
+		A4FFEDC91B1085DB0058D399 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4FFEDC81B1085DB0058D399 /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +79,15 @@
 		1BFA3D6E19F4DE03009D4768 /* SampleTableView002Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SampleTableView002Tests.m; sourceTree = "<group>"; };
 		1BFA3D7819F4EC30009D4768 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		1BFA3D7919F4EC30009D4768 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		A42C4A271B1175950075E140 /* GTMHTTPFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMHTTPFetcher.h; path = "../../../../../../Desktop/gtm-oauth2-read-only/HTTPFetcher/GTMHTTPFetcher.h"; sourceTree = "<group>"; };
+		A42C4A281B1175950075E140 /* GTMHTTPFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTMHTTPFetcher.m; path = "../../../../../../Desktop/gtm-oauth2-read-only/HTTPFetcher/GTMHTTPFetcher.m"; sourceTree = "<group>"; };
+		A42C4A2A1B1176140075E140 /* GTMOAuth2SignIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMOAuth2SignIn.h; path = "../../../../../../Desktop/gtm-oauth2-read-only/Source/GTMOAuth2SignIn.h"; sourceTree = "<group>"; };
+		A42C4A2B1B1176140075E140 /* GTMOAuth2SignIn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTMOAuth2SignIn.m; path = "../../../../../../Desktop/gtm-oauth2-read-only/Source/GTMOAuth2SignIn.m"; sourceTree = "<group>"; };
+		A42C4A2C1B1176140075E140 /* GTMOAuth2Authentication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTMOAuth2Authentication.m; path = "../../../../../../Desktop/gtm-oauth2-read-only/Source/GTMOAuth2Authentication.m"; sourceTree = "<group>"; };
+		A42C4A2D1B1176140075E140 /* GTMOAuth2Authentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMOAuth2Authentication.h; path = "../../../../../../Desktop/gtm-oauth2-read-only/Source/GTMOAuth2Authentication.h"; sourceTree = "<group>"; };
+		A42C4A301B1176340075E140 /* GTMOAuth2ViewControllerTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMOAuth2ViewControllerTouch.h; path = "../../../../../../Desktop/gtm-oauth2-read-only/Source/Touch/GTMOAuth2ViewControllerTouch.h"; sourceTree = "<group>"; };
+		A42C4A311B1176340075E140 /* GTMOAuth2ViewControllerTouch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTMOAuth2ViewControllerTouch.m; path = "../../../../../../Desktop/gtm-oauth2-read-only/Source/Touch/GTMOAuth2ViewControllerTouch.m"; sourceTree = "<group>"; };
+		A42C4A321B1176340075E140 /* GTMOAuth2ViewTouch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GTMOAuth2ViewTouch.xib; path = "../../../../../../Desktop/gtm-oauth2-read-only/Source/Touch/GTMOAuth2ViewTouch.xib"; sourceTree = "<group>"; };
 		A439C1191AFF7F43000C88C1 /* NoImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NoImage.png; path = ../../../../../../../Desktop/NoImage.png; sourceTree = "<group>"; };
 		A439C11D1B0056A2000C88C1 /* customCell2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = customCell2.xib; sourceTree = "<group>"; };
 		A439C1221B0059CD000C88C1 /* customTableViewCell2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = customTableViewCell2.h; sourceTree = "<group>"; };
@@ -84,6 +100,8 @@
 		A4FFEDA21B0C5F0F0058D399 /* Gourrepo5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gourrepo5.png; sourceTree = "<group>"; };
 		A4FFEDA31B0C5F0F0058D399 /* Gourrepo6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gourrepo6.png; sourceTree = "<group>"; };
 		A4FFEDA41B0C5F0F0058D399 /* Gourrepo6plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gourrepo6plus.png; sourceTree = "<group>"; };
+		A4FFEDC61B1085BA0058D399 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		A4FFEDC81B1085DB0058D399 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +109,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4FFEDC91B1085DB0058D399 /* SystemConfiguration.framework in Frameworks */,
+				A4FFEDC71B1085BA0058D399 /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,6 +146,8 @@
 		1BFA3D4619F4DE03009D4768 = {
 			isa = PBXGroup;
 			children = (
+				A4FFEDC81B1085DB0058D399 /* SystemConfiguration.framework */,
+				A4FFEDC61B1085BA0058D399 /* Security.framework */,
 				1BFA3D5119F4DE03009D4768 /* SampleTableView002 */,
 				1BFA3D6B19F4DE03009D4768 /* SampleTableView002Tests */,
 				1BFA3D5019F4DE03009D4768 /* Products */,
@@ -152,6 +174,15 @@
 				1BFA3D7919F4EC30009D4768 /* DetailViewController.m */,
 				A439C1251B00F70E000C88C1 /* UploadViewController.h */,
 				A439C1261B00F70E000C88C1 /* UploadViewController.m */,
+				A42C4A301B1176340075E140 /* GTMOAuth2ViewControllerTouch.h */,
+				A42C4A311B1176340075E140 /* GTMOAuth2ViewControllerTouch.m */,
+				A42C4A321B1176340075E140 /* GTMOAuth2ViewTouch.xib */,
+				A42C4A2A1B1176140075E140 /* GTMOAuth2SignIn.h */,
+				A42C4A2B1B1176140075E140 /* GTMOAuth2SignIn.m */,
+				A42C4A2C1B1176140075E140 /* GTMOAuth2Authentication.m */,
+				A42C4A2D1B1176140075E140 /* GTMOAuth2Authentication.h */,
+				A42C4A271B1175950075E140 /* GTMHTTPFetcher.h */,
+				A42C4A281B1175950075E140 /* GTMHTTPFetcher.m */,
 				1BFA3D5C19F4DE03009D4768 /* Main.storyboard */,
 				1BFA3D5F19F4DE03009D4768 /* Images.xcassets */,
 				1BFA3D6119F4DE03009D4768 /* LaunchScreen.xib */,
@@ -275,6 +306,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A42C4A341B1176340075E140 /* GTMOAuth2ViewTouch.xib in Resources */,
 				A4FFEDA81B0C5F0F0058D399 /* Gourrepo6plus.png in Resources */,
 				1BDEDF941ADE13B300D315F8 /* star5.png in Resources */,
 				1BDEDF931ADE13B300D315F8 /* star4.png in Resources */,
@@ -312,10 +344,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				A439C1271B00F70E000C88C1 /* UploadViewController.m in Sources */,
+				A42C4A2E1B1176140075E140 /* GTMOAuth2SignIn.m in Sources */,
 				1BDEDF971ADE142B00D315F8 /* customTableViewCell.m in Sources */,
 				1BFA3D5B19F4DE03009D4768 /* ViewController.m in Sources */,
 				1BFA3D5819F4DE03009D4768 /* AppDelegate.m in Sources */,
+				A42C4A291B1175950075E140 /* GTMHTTPFetcher.m in Sources */,
 				1BFA3D5519F4DE03009D4768 /* main.m in Sources */,
+				A42C4A331B1176340075E140 /* GTMOAuth2ViewControllerTouch.m in Sources */,
+				A42C4A2F1B1176140075E140 /* GTMOAuth2Authentication.m in Sources */,
 				1BFA3D7A19F4EC30009D4768 /* DetailViewController.m in Sources */,
 				A439C1241B0059CD000C88C1 /* customTableViewCell2.m in Sources */,
 			);
