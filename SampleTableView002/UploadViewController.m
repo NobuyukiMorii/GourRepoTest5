@@ -48,14 +48,14 @@ static NSString *const hasLoggedIn = @"hasLoggedInKey";// NSUserDefaultに保存
         [cookieStorage deleteCookie:cookie];
     }];
 
-    NSHTTPCookie *cookie = [NSHTTPCookie cookieWithProperties:[NSDictionary dictionaryWithObjectsAndKeys:
-                                                               cookieName, NSHTTPCookieName,
-                                                               cookieValue, NSHTTPCookieValue,
-                                                               cookieDomain, NSHTTPCookieDomain,
-                                                               @"/", NSHTTPCookiePath,
-                                                               [NSDate distantFuture], NSHTTPCookieExpires,
-                                                               nil]];
-    [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
+//    NSHTTPCookie *cookie = [NSHTTPCookie cookieWithProperties:[NSDictionary dictionaryWithObjectsAndKeys:
+//                                                               cookieName, NSHTTPCookieName,
+//                                                               cookieValue, NSHTTPCookieValue,
+//                                                               cookieDomain, NSHTTPCookieDomain,
+//                                                               @"/", NSHTTPCookiePath,
+//                                                               [NSDate distantFuture], NSHTTPCookieExpires,
+//                                                               nil]];
+//    [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
 }
 
 - (void)didReceiveMemoryWarning {
