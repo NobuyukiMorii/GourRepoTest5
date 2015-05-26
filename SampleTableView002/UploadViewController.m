@@ -41,6 +41,21 @@ static NSString *const hasLoggedIn = @"hasLoggedInKey";// NSUserDefaultに保存
 // ページ読込完了時
 -(void)webViewDidFinishLoad:(UIWebView*)webView{
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+
+    NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    NSArray *cookies = [cookieStorage cookiesForURL:[NSURL URLWithString:@"http://hogehoge.com"]];
+    [cookies enumerateObjectsUsingBlock:^(NSHTTPCookie *cookie, NSUInteger idx, BOOL *stop) {
+        [cookieStorage deleteCookie:cookie];
+    }];
+
+    NSHTTPCookie *cookie = [NSHTTPCookie cookieWithProperties:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                               cookieName, NSHTTPCookieName,
+                                                               cookieValue, NSHTTPCookieValue,
+                                                               cookieDomain, NSHTTPCookieDomain,
+                                                               @"/", NSHTTPCookiePath,
+                                                               [NSDate distantFuture], NSHTTPCookieExpires,
+                                                               nil]];
+    [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -121,7 +136,7 @@ static NSString *const hasLoggedIn = @"hasLoggedInKey";// NSUserDefaultに保存
         
         //WebViewの表示
         [self displayWebView];
- 
+
         
     }
     
