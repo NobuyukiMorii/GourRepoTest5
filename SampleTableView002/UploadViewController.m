@@ -168,7 +168,7 @@ static NSString *const hasLoggedIn = @"hasLoggedInKey";// NSUserDefaultに保存
     [self.view addSubview:wv];
     
     NSLog(@"%@",_RestId);
-    NSString *str = @"http://localhost:8888/GourRepoM2/Movies/selectRestForAddMovie";
+    NSString *str = @"http://mory.weblike.jp/GourRepoM2/Movies/selectRestForAddMovie";
     NSURL *url = [NSURL URLWithString:str];
     NSURLRequest *req = [NSURLRequest requestWithURL:url];
     [wv loadRequest:req];
