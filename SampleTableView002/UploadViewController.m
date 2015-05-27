@@ -14,6 +14,7 @@
 
 @implementation UploadViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -29,7 +30,7 @@
     [self.view addSubview:wv];
     
     NSLog(@"%@",_RestId);
-    NSString *str = @"http://localhost:8888/GourRepoM2/Movies/selectRestForAddMovie";
+    NSString *str = @"http://mory.weblike.jp/GourRepoM2/Movies/selectRestForAddMovie";
     NSURL *url = [NSURL URLWithString:str];
     NSURLRequest *req = [NSURLRequest requestWithURL:url];
     [wv loadRequest:req];
@@ -47,6 +48,7 @@
 // ページ読込完了時
 -(void)webViewDidFinishLoad:(UIWebView*)webView{
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -56,7 +58,7 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     
-    //NSLog(@"web view string 's  is %@",request.URL.absoluteString);
+    NSLog(@"%@",request.URL.absoluteString);
     
     return YES;
 }
