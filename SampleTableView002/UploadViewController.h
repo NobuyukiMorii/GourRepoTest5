@@ -13,5 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIWebView *uploadWebView;
 @property (nonatomic,assign) NSString *RestId;
 
+@property (nonatomic,assign) BOOL flg;
+@property (nonatomic,assign) int google_access_count;
 
 @end

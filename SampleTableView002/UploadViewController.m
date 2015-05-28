@@ -18,6 +18,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //フラグをNoにする
+    _flg = NO;
+    _google_access_count = 0;
+    
     //画面の大きさを取得する
     UIWebView *wv = [[UIWebView alloc] init];
     wv.delegate = self;
@@ -29,9 +33,9 @@
     wv.scalesPageToFit = YES;
     [self.view addSubview:wv];
     
-    NSLog(@"%@",_RestId);
-    NSString *str = @"http://mory.weblike.jp/GourRepoM2/Movies/selectRestForAddMovie";
-    NSURL *url = [NSURL URLWithString:str];
+    NSString *str = @"http://mory.weblike.jp/GourRepoM2/Movies/add/";
+    NSString *mergeStr = [str stringByAppendingString:_RestId];
+    NSURL *url = [NSURL URLWithString:mergeStr];
     NSURLRequest *req = [NSURLRequest requestWithURL:url];
     [wv loadRequest:req];
 
@@ -58,8 +62,48 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     
-    NSString *urlString = [NSString stringWithFormat:@"%@", request];
-    NSLog(@"url :%@", urlString);
+    if(_google_access_count >= 15){
+        return YES;
+    }
+        
+    NSString *urlString = [NSString stringWithFormat:@"%@", [request valueForKeyPath:@"URL"]];
+    NSLog(@"%@", urlString);
+    
+    NSString *google = @"google";
+    
+    NSRange range = [urlString rangeOfString:google];
+    if (range.location != NSNotFound) {
+        NSLog(@"ある");
+        _google_access_count++;
+        _flg = YES;
+        
+        NSLog(@"%d",_google_access_count);
+        
+    } else {
+        NSLog(@"ない");
+    }
+    
+    if(_google_access_count == 14){
+        
+        //画面の大きさを取得する
+        UIWebView *wv = [[UIWebView alloc] init];
+        wv.delegate = self;
+        
+        //ステータスバーの高さ
+        float statusHeight = [[UIApplication sharedApplication] statusBarFrame].size.height;
+        
+        wv.frame = CGRectMake(0, self.navigationController.navigationBar.bounds.size.height+statusHeight, self.view.bounds.size.width, self.view.bounds.size.height-self.navigationController.navigationBar.bounds.size.height-statusHeight);
+        wv.scalesPageToFit = YES;
+        [self.view addSubview:wv];
+        
+        NSString *str = @"http://mory.weblike.jp/GourRepoM2/Movies/add/";
+        NSString *mergeStr = [str stringByAppendingString:_RestId];
+        NSURL *url = [NSURL URLWithString:mergeStr];
+        NSURLRequest *req = [NSURLRequest requestWithURL:url];
+        [wv loadRequest:req];
+        
+        _google_access_count++;
+    }
     
     return YES;
 }
