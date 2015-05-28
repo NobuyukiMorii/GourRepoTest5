@@ -58,7 +58,8 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     
-    NSLog(@"%@",request.URL.absoluteString);
+    NSString *urlString = [NSString stringWithFormat:@"%@", request];
+    NSLog(@"url :%@", urlString);
     
     return YES;
 }
