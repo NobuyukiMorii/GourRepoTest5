@@ -6,10 +6,10 @@
 //  Copyright (c) 2015年 Eriko Ichinohe. All rights reserved.
 //
 
+#import "ViewController.h"
 #import "UploadViewController.h"
 
 @interface UploadViewController ()
--(void)SwingObject;
 @end
 
 @implementation UploadViewController
@@ -39,6 +39,7 @@
     [self.view addSubview:wv];
     
     NSString *str = @"http://mory.weblike.jp/GourRepoM2/Movies/add/";
+    //NSString *str = @"http://localhost:8888/GourRepoM2/Movies/add/";
     NSString *mergeStr = [str stringByAppendingString:_RestId];
     NSURL *url = [NSURL URLWithString:mergeStr];
     NSURLRequest *req = [NSURLRequest requestWithURL:url];
@@ -51,45 +52,8 @@
 -(void)webViewDidStartLoad:(UIWebView*)webView{
     //インジケータをくるくるさせる
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    
-//    // タイマーを作成してスタート
-//    self.tm =
-//    [NSTimer
-//        scheduledTimerWithTimeInterval:10.0f
-//        target:self
-//        selector:@selector(ridirect:)
-//        userInfo:nil
-//        repeats:NO
-//     ];
- }
 
-//呼ばれるhogeメソッド
--(void)ridirect:(NSTimer*)timer{
-    
-    if(_flg == NO){
-        NSLog(@"%@",@"終わらなかった");
-        //タイマー停止
-        [self.tm invalidate];
-        self.tm = nil;
-        
-        //画面の大きさを取得する
-        UIWebView *wv = [[UIWebView alloc] init];
-        wv.delegate = self;
-        
-        //ステータスバーの高さ
-        float statusHeight = [[UIApplication sharedApplication] statusBarFrame].size.height;
-        
-        wv.frame = CGRectMake(0, self.navigationController.navigationBar.bounds.size.height+statusHeight, self.view.bounds.size.width, self.view.bounds.size.height-self.navigationController.navigationBar.bounds.size.height-statusHeight);
-        wv.scalesPageToFit = YES;
-        [self.view addSubview:wv];
-        
-        NSString *str = @"http://mory.weblike.jp/GourRepoM2/Movies/add/";
-        NSString *mergeStr = [str stringByAppendingString:_RestId];
-        NSURL *url = [NSURL URLWithString:mergeStr];
-        NSURLRequest *req = [NSURLRequest requestWithURL:url];
-        [wv loadRequest:req];
-    }
-}
+ }
 
 // ページ読込完了時
 -(void)webViewDidFinishLoad:(UIWebView*)webView{
@@ -132,54 +96,27 @@
         [self.view addSubview:wv];
         
         NSString *str = @"http://mory.weblike.jp/GourRepoM2/Movies/add/";
+        //NSString *str = @"http://localhost:8888/GourRepoM2/Movies/add/";
         NSString *mergeStr = [str stringByAppendingString:_RestId];
         NSURL *url = [NSURL URLWithString:mergeStr];
         NSURLRequest *req = [NSURLRequest requestWithURL:url];
         [wv loadRequest:req];
         
-    } else {
-        _flg = NO;
     }
     
+    //動画投稿完了時にメインの検索画面に戻す
+    NSString *view = @"http://mory.weblike.jp/GourRepoM2/Movies/view/";
+    NSRange range2 = [urlString rangeOfString:view];
     
-
-//
-//    NSString *google = @"google";
-//    
-//    NSRange range = [urlString rangeOfString:google];
-//    if (range.location != NSNotFound) {
-//        NSLog(@"ある");
-//        _google_access_count++;
-//        _flg = YES;
-//        
-//        NSLog(@"%d",_google_access_count);
-//        
-//    } else {
-//        NSLog(@"ない");
-//    }
-//    
-//    if(_google_access_count == 14){
-//        
-//        //画面の大きさを取得する
-//        UIWebView *wv = [[UIWebView alloc] init];
-//        wv.delegate = self;
-//        
-//        //ステータスバーの高さ
-//        float statusHeight = [[UIApplication sharedApplication] statusBarFrame].size.height;
-//        
-//        wv.frame = CGRectMake(0, self.navigationController.navigationBar.bounds.size.height+statusHeight, self.view.bounds.size.width, self.view.bounds.size.height-self.navigationController.navigationBar.bounds.size.height-statusHeight);
-//        wv.scalesPageToFit = YES;
-//        [self.view addSubview:wv];
-//        
-//        NSString *str = @"http://mory.weblike.jp/GourRepoM2/Movies/add/";
-//        NSString *mergeStr = [str stringByAppendingString:_RestId];
-//        NSURL *url = [NSURL URLWithString:mergeStr];
-//        NSURLRequest *req = [NSURLRequest requestWithURL:url];
-//        [wv loadRequest:req];
-//        
-//        _google_access_count++;
-//    }
-//    
+    if (range2.location != NSNotFound) {
+        //遷移先画面のカプセル化（インスタンス化）
+        NSLog(@"%@",@"viewじゃん");
+        ViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
+        
+        //ナビゲーションコントローラーの機能で画面遷移
+        [[self navigationController] pushViewController:vc animated:YES];
+    }
+        
     return YES;
 }
 

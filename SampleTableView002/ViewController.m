@@ -18,6 +18,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //戻るボタンを隠す
+    [self.navigationItem setHidesBackButton:YES];
+    
     UISearchBar *searchBar = [[UISearchBar alloc] init];
     searchBar.tintColor = [UIColor darkGrayColor];
     searchBar.placeholder = @"検索";
@@ -172,32 +175,37 @@
         [uv_load addSubview:aci_loading];
         [self.view addSubview:uv_load];
         
-        //ステータスバーのぐるぐる表示
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-        
         NSData * data = [NSData dataWithContentsOfURL:url2];
-        NSArray *array = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-        NSString *message = [array valueForKeyPath:@"message"];
-        _movieArray = [message valueForKeyPath:@"result"];
-        
-        if(!_movieArray){
-            NSLog(@"connection error.");
-            //Loading非表示
-            uv_load.hidden = true;
-        } else {
-            if(_movieArray.count == 0){
-               NSLog(@"connection error.");
+        NSLog(@"%@",data);
+        if (data != nil){
+            NSLog(@"%@",@"nullじゃないよ");
+            //ステータスバーのぐるぐる表示
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+            
+            NSArray *array = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+            NSString *message = [array valueForKeyPath:@"message"];
+            _movieArray = [message valueForKeyPath:@"result"];
+            
+            if(!_movieArray){
+                NSLog(@"配列がないよ.");
                 //Loading非表示
                 uv_load.hidden = true;
             } else {
-                //テーブルをリフレッシュする
-                [self.coffeeListTableView reloadData];
-                //Loading非表示
-                uv_load.hidden = true;
-                
-                NSLog(@"Did finish loading!");
+                if(_movieArray.count == 0){
+                   NSLog(@"1個もないよ.");
+                    //Loading非表示
+                    uv_load.hidden = true;
+                } else {
+                    //テーブルをリフレッシュする
+                    [self.coffeeListTableView reloadData];
+                    //Loading非表示
+                    uv_load.hidden = true;
+                    
+                    NSLog(@"Did finish loading!");
+                }
             }
         }
+        
         //ステータスバーのぐるぐる非表示
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     }
