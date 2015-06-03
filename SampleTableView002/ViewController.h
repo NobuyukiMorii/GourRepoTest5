@@ -12,6 +12,7 @@
 {
     NSArray *_movieArray;   //メンバ変数宣言
     UIView *uv_load;        //LoadingView(通信中にぐるぐる回るやつ)
+    NSString *KensakuText;   //検索文字列
 }
 
 @property (weak, nonatomic) NSMutableData *receivedData;

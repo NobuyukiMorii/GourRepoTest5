@@ -51,8 +51,10 @@
     
     NSString * urlString = [NSString stringWithFormat:@"http://mory.weblike.jp/GourRepoM2/ApiMovies/returnMoviesJson.json"];
     NSURL * url = [NSURL URLWithString:urlString];
+    
     //ステータスバーのぐるぐる表示
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    
     NSData * data = [NSData dataWithContentsOfURL:url];
     NSArray *array = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
     
@@ -134,53 +136,41 @@
     // Dispose of any resources that can be recreated.
 }
 
-//リターンされた時に発動
-- (void) searchItem:(NSString *) searchText {
-    // 検索処理
-}
-
 - (void) searchBarSearchButtonClicked: (UISearchBar *) searchBar {
-    [searchBar resignFirstResponder];
-}
 
-//検索
-- (void) searchBar:(UISearchBar *)searchBar textDidChange:(NSString *) searchText {
-    //Loading非表示
-    uv_load.hidden = true;
-    searchText = [searchText stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    //Loadingを表示するView(通信中にぐるぐる回るやつ) 設定
+    UIScreen *sc = [UIScreen mainScreen];
+    uv_load = [[UIView alloc] initWithFrame:CGRectMake(0,0,sc.applicationFrame.size.width, sc.applicationFrame.size.height)];
+    uv_load.backgroundColor = [UIColor colorWithRed:0.3 green:0.3 blue:0.3 alpha:0.7];
     
-    if (![searchText isEqualToString:@""]){
+    //ぐるぐる回る
+    UIActivityIndicatorView *aci_loading;
+    aci_loading = [[UIActivityIndicatorView alloc] init];
+    aci_loading.frame = CGRectMake(0,0,sc.applicationFrame.size.width, sc.applicationFrame.size.height);
+    aci_loading.center = uv_load.center;
+    aci_loading.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
+    [aci_loading startAnimating];
+    
+    //Loading表示
+    [uv_load addSubview:aci_loading];
+    [self.view addSubview:uv_load];
+    
+    //ステータスバーのぐるぐる表示
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    
+    if (![KensakuText isEqualToString:@""] || KensakuText != nil){
         
         NSLog(@"%@",@"あるよ");
-    
+        
         // 送信したいURLを作成する
         NSString *str1 = @"http://mory.weblike.jp/GourRepoM2/ApiMovies/returnMoviesJsonGET.json?areaname=";
-        str1 = [str1 stringByAppendingString: searchText];
+        str1 = [str1 stringByAppendingString: KensakuText];
         NSURL *url2 = [NSURL URLWithString:str1];
-        
-        //Loadingを表示するView(通信中にぐるぐる回るやつ) 設定
-        UIScreen *sc = [UIScreen mainScreen];
-        uv_load = [[UIView alloc] initWithFrame:CGRectMake(0,0,sc.applicationFrame.size.width, sc.applicationFrame.size.height)];
-        uv_load.backgroundColor = [UIColor colorWithRed:0.3 green:0.3 blue:0.3 alpha:0.7];
-        
-        //ぐるぐる回る
-        UIActivityIndicatorView *aci_loading;
-        aci_loading = [[UIActivityIndicatorView alloc] init];
-        aci_loading.frame = CGRectMake(0,0,sc.applicationFrame.size.width, sc.applicationFrame.size.height);
-        aci_loading.center = uv_load.center;
-        aci_loading.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
-        [aci_loading startAnimating];
-        
-        //Loading表示
-        [uv_load addSubview:aci_loading];
-        [self.view addSubview:uv_load];
         
         NSData * data = [NSData dataWithContentsOfURL:url2];
         NSLog(@"%@",data);
         if (data != nil){
             NSLog(@"%@",@"nullじゃないよ");
-            //ステータスバーのぐるぐる表示
-            [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
             
             NSArray *array = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
             NSString *message = [array valueForKeyPath:@"message"];
@@ -192,7 +182,7 @@
                 uv_load.hidden = true;
             } else {
                 if(_movieArray.count == 0){
-                   NSLog(@"1個もないよ.");
+                    NSLog(@"1個もないよ.");
                     //Loading非表示
                     uv_load.hidden = true;
                 } else {
@@ -205,10 +195,23 @@
                 }
             }
         }
-        
-        //ステータスバーのぐるぐる非表示
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    
     }
+    //Loading非表示
+    uv_load.hidden = true;
+    //ステータスバーのぐるぐる非表示
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    //キーボードをしまう
+    [searchBar resignFirstResponder];
+}
+
+//検索
+- (void) searchBar:(UISearchBar *)searchBar textDidChange:(NSString *) searchText {
+
+    searchText = [searchText stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    //メンバ変数に代入
+    KensakuText = searchText;
+    
 }
 
 // UISearchBar内のUITextFieldを取得する
