@@ -24,6 +24,7 @@
 		1BFA3D6319F4DE03009D4768 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BFA3D6119F4DE03009D4768 /* LaunchScreen.xib */; };
 		1BFA3D6F19F4DE03009D4768 /* SampleTableView002Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BFA3D6E19F4DE03009D4768 /* SampleTableView002Tests.m */; };
 		1BFA3D7A19F4EC30009D4768 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BFA3D7919F4EC30009D4768 /* DetailViewController.m */; };
+		A42C4A361B1EFC420075E140 /* White.png in Resources */ = {isa = PBXBuildFile; fileRef = A42C4A351B1EFC420075E140 /* White.png */; };
 		A439C11A1AFF7F43000C88C1 /* NoImage.png in Resources */ = {isa = PBXBuildFile; fileRef = A439C1191AFF7F43000C88C1 /* NoImage.png */; };
 		A439C11E1B0056A2000C88C1 /* customCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = A439C11D1B0056A2000C88C1 /* customCell2.xib */; };
 		A439C1241B0059CD000C88C1 /* customTableViewCell2.m in Sources */ = {isa = PBXBuildFile; fileRef = A439C1231B0059CD000C88C1 /* customTableViewCell2.m */; };
@@ -72,6 +73,7 @@
 		1BFA3D6E19F4DE03009D4768 /* SampleTableView002Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SampleTableView002Tests.m; sourceTree = "<group>"; };
 		1BFA3D7819F4EC30009D4768 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		1BFA3D7919F4EC30009D4768 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		A42C4A351B1EFC420075E140 /* White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = White.png; sourceTree = "<group>"; };
 		A439C1191AFF7F43000C88C1 /* NoImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NoImage.png; path = ../../../../../../../Desktop/NoImage.png; sourceTree = "<group>"; };
 		A439C11D1B0056A2000C88C1 /* customCell2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = customCell2.xib; sourceTree = "<group>"; };
 		A439C1221B0059CD000C88C1 /* customTableViewCell2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = customTableViewCell2.h; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 		1BDEDF861ADE13B300D315F8 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				A42C4A351B1EFC420075E140 /* White.png */,
 				A4FFEDA11B0C5F0F0058D399 /* Gourrepo4.png */,
 				A4FFEDA21B0C5F0F0058D399 /* Gourrepo5.png */,
 				A4FFEDA31B0C5F0F0058D399 /* Gourrepo6.png */,
@@ -292,6 +295,7 @@
 				1BDEDF901ADE13B300D315F8 /* star1.png in Resources */,
 				A439C11E1B0056A2000C88C1 /* customCell2.xib in Resources */,
 				1BDEDF8F1ADE13B300D315F8 /* Japan.png in Resources */,
+				A42C4A361B1EFC420075E140 /* White.png in Resources */,
 				A439C11A1AFF7F43000C88C1 /* NoImage.png in Resources */,
 				1BFA3D6019F4DE03009D4768 /* Images.xcassets in Resources */,
 			);

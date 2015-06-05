@@ -77,7 +77,8 @@
     
     //名前を表示
     self.coffeeTitle.text = [NSString stringWithFormat:@"%@",[Movie valueForKeyPath:@"Movie"][@"title"]];
-
+    self.coffeeTitle.textColor = [UIColor whiteColor];
+    
     //セクション１
     MovieDataHeader = @[@"タイトル",@"レポーター",@"説明文",@"再生回数",@"撮影日時"];
     MovieData = @[MovieTitle,ReporterName,Moviedescription,MovieCount,MovieCreated];
@@ -153,8 +154,8 @@
     
     UILabel *title_l = [[UILabel alloc] init];
     title_l.frame = CGRectMake(0, 0, screen.applicationFrame.size.width, 30);
-    title_l.textColor = [UIColor blackColor];
-    title_l.backgroundColor = [UIColor colorWithRed:0.93 green:0.94 blue:0.95 alpha:1.0];
+    title_l.textColor = [UIColor whiteColor];
+    title_l.backgroundColor = [UIColor colorWithRed:1 green:0.604 blue:0 alpha:1];
     title_l.textAlignment = NSTextAlignmentCenter;
     title_l.font = [UIFont systemFontOfSize:13.0];
 

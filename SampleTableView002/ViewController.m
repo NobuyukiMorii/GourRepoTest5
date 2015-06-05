@@ -18,6 +18,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // ナビゲーションバー全体の背景色
+    self.navigationController.navigationBar.barTintColor =  [UIColor colorWithRed:1 green:0.604 blue:0 alpha:1];
+    
     //戻るボタンを隠す
     [self.navigationItem setHidesBackButton:YES];
     
@@ -82,35 +85,38 @@
     //セルの再利用
     customTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifer];
 
-    cell.title.text = [NSString stringWithFormat:@"%@",_movieArray[(long)indexPath.row][@"Movie"][@"title"]];
-    cell.count.text = [NSString stringWithFormat:@"%@",_movieArray[(long)indexPath.row][@"Movie"][@"count"]];
-    cell.RestName.text = [NSString stringWithFormat:@"%@",_movieArray[(long)indexPath.row][@"Restaurant"][@"name"]];
-    cell.StationName.text = [NSString stringWithFormat:@"%@",_movieArray[(long)indexPath.row][@"Restaurant"][@"access_station"]];
-    cell.ReporterName.text = [NSString stringWithFormat:@"%@",_movieArray[(long)indexPath.row][@"User"][@"UserProfile"][@"name"]];
+    if(_movieArray.count != 0){
     
-    if ([_imageCache objectForKey:indexPath]) {
-        // すでにキャッシュしてある場合
-        [cell.thumbnail setImage:[_imageCache objectForKey:indexPath]];
+        cell.title.text = [NSString stringWithFormat:@"%@",_movieArray[(long)indexPath.row][@"Movie"][@"title"]];
+        cell.count.text = [NSString stringWithFormat:@"%@",_movieArray[(long)indexPath.row][@"Movie"][@"count"]];
+        cell.RestName.text = [NSString stringWithFormat:@"%@",_movieArray[(long)indexPath.row][@"Restaurant"][@"name"]];
+        cell.StationName.text = [NSString stringWithFormat:@"%@",_movieArray[(long)indexPath.row][@"Restaurant"][@"access_station"]];
+        cell.ReporterName.text = [NSString stringWithFormat:@"%@",_movieArray[(long)indexPath.row][@"User"][@"UserProfile"][@"name"]];
         
-    } else {
-        if (_coffeeListTableView.dragging == NO && _coffeeListTableView.decelerating == NO)
-        {
-            // URLから画像を表示
-            dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-            dispatch_queue_t q_main = dispatch_get_main_queue();
+        if ([_imageCache objectForKey:indexPath]) {
+            // すでにキャッシュしてある場合
+            [cell.thumbnail setImage:[_imageCache objectForKey:indexPath]];
             
-            cell.imageView.image = nil;
-            
-            dispatch_async(q_global, ^{
-                NSString *imageURL = _movieArray[(long)indexPath.row][@"Movie"][@"thumbnails_url"];
-                UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL: [NSURL URLWithString: imageURL]]];
-                if(!image){
-                    image = [UIImage imageNamed:@"NoImage.png"];
-                }
-                dispatch_async(q_main, ^{
-                    [cell.thumbnail setImage:image];
+        } else {
+            if (_coffeeListTableView.dragging == NO && _coffeeListTableView.decelerating == NO)
+            {
+                // URLから画像を表示
+                dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+                dispatch_queue_t q_main = dispatch_get_main_queue();
+                
+                cell.imageView.image = nil;
+                
+                dispatch_async(q_global, ^{
+                    NSString *imageURL = _movieArray[(long)indexPath.row][@"Movie"][@"thumbnails_url"];
+                    UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL: [NSURL URLWithString: imageURL]]];
+                    if(!image){
+                        image = [UIImage imageNamed:@"White.png"];
+                    }
+                    dispatch_async(q_main, ^{
+                        [cell.thumbnail setImage:image];
+                    });
                 });
-            });
+            }
         }
     }
     
