@@ -13,7 +13,7 @@
 
 
 @interface DetailViewController ()
- // アクティビティインジケータ
+//アクティビティインジケータ
 @property UIActivityIndicatorView *indicator;
 @end
 
@@ -36,7 +36,7 @@
     // タイトルとボタンのスタイルを指定した生成例
     UIBarButtonItem *btn =
     [[UIBarButtonItem alloc]
-     initWithTitle:@"Upload"
+     initWithTitle:@"お店の動画を投稿"
      style:UIBarButtonItemStylePlain
      target:self  // デリゲートのターゲットを指定
      action:@selector(upload)
@@ -63,6 +63,7 @@
     NSString *MovieCount = [NSString stringWithFormat:@"%@",[Movie valueForKeyPath:@"Movie"][@"count"]];
     NSString *Moviedescription = [NSString stringWithFormat:@"%@",[Movie valueForKeyPath:@"Movie"][@"description"]];
     NSString *MovieCreated = [NSString stringWithFormat:@"%@",[Movie valueForKeyPath:@"Movie"][@"created"]];
+    
     //ユーザー情報
     NSArray *User = [Movie valueForKeyPath:@"User"];
     NSString *ReporterName = [NSString stringWithFormat:@"%@",[User valueForKeyPath:@"UserProfile"][@"name"]];

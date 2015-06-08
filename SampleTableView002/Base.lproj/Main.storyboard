@@ -76,7 +76,7 @@
                             </tableView>
                             <webView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kzI-PS-juv">
                                 <rect key="frame" x="-5" y="88" width="611" height="252"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="250" id="w4A-Al-Rdc"/>
                                 </constraints>

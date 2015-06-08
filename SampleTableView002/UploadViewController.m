@@ -105,18 +105,22 @@
     }
     
     //動画投稿完了時にメインの検索画面に戻す
-    NSString *view = @"http://mory.weblike.jp/GourRepoM2/Movies/view/";
+    NSString *view = @"http://mory.weblike.jp/GourRepoM2/Movies/view";
     NSRange range2 = [urlString rangeOfString:view];
     
     if (range2.location != NSNotFound) {
         //遷移先画面のカプセル化（インスタンス化）
-        NSLog(@"%@",@"viewじゃん");
         ViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
         
         //ナビゲーションコントローラーの機能で画面遷移
         [[self navigationController] pushViewController:vc animated:YES];
-    }
         
+        // 投稿完了時のアラートビュー
+        UIAlertView *alert =
+        [[UIAlertView alloc] initWithTitle:@"登録成功" message:@"動画の登録に成功しました。" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    }
+    
     return YES;
 }
 

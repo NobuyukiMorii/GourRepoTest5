@@ -20,6 +20,8 @@
     
     // ナビゲーションバー全体の背景色
     self.navigationController.navigationBar.barTintColor =  [UIColor colorWithRed:1 green:0.604 blue:0 alpha:1];
+    //　ナビゲーションバーの文字色
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
     //戻るボタンを隠す
     [self.navigationItem setHidesBackButton:YES];
@@ -59,10 +61,20 @@
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
     NSData * data = [NSData dataWithContentsOfURL:url];
-    NSArray *array = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
     
-    NSString *message = [array valueForKeyPath:@"message"];
-    _movieArray = [message valueForKeyPath:@"result"];
+    if(data != nil){
+        NSArray *array = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+        NSString *message = [array valueForKeyPath:@"message"];
+        _movieArray = [message valueForKeyPath:@"result"];
+    } else {
+        
+        // ネットワークエラー時のアラートビュー
+        UIAlertView *alert =
+        [[UIAlertView alloc] initWithTitle:@"エラー" message:@"通信状況の良いところで起動して下さい。" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+
+        
+    }
     
     //ステータスバーのぐるぐる非表示
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
@@ -200,9 +212,14 @@
                     NSLog(@"Did finish loading!");
                 }
             }
+        } else {
+            // ネットワークエラー時のアラートビュー
+            UIAlertView *alert =
+            [[UIAlertView alloc] initWithTitle:@"エラー" message:@"通信状況の良いところで起動して下さい。" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
         }
-    
     }
+    
     //Loading非表示
     uv_load.hidden = true;
     //ステータスバーのぐるぐる非表示
